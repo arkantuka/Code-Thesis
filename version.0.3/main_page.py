@@ -1,27 +1,27 @@
-import tkinter as tk
 from pages import add_data_page as add_dt
 from pages import face_collect_page as face_coll
 from pages import face_training_page as face_train
 from pages import face_recognition_page as face_rec
 from pages import attendance_time_page as att
 import run_app as icp
+import customtkinter as ctk
+
 
 class MainPage():
     
     def createLabel(window,label_name):
-        label = tk.Label(window,
+        label = ctk.CTkLabel(master=window,
                          text=label_name,
-                         font=("Leelawadee", 20),
+                         font=("Leelawadee", 25),
                          padx=100)
-        label.pack()
+        return label
         
     def createButton(window,label_name,command):
-        button = tk.Button(window,foreground="blue",background='gray',
-                           text=label_name,height=2,width=10,
-                           padx=100,
-                           font=("Leelawadee", 10, "bold"),
+        button = ctk.CTkButton(master=window,fg_color="gray",
+                           text=label_name,height=50,width=200,
+                           font=("Leelawadee", 25, "bold"),
                            command=command)
-        button.pack(pady=5)
+        return button
         
     def button_click(window,course_id,command):
         window.destroy()
@@ -42,49 +42,80 @@ class MainPage():
         
     def __init__(self, course_id):
         self.course_id = course_id
+        ctk.set_appearance_mode('dark')
+        ctk.set_default_color_theme('dark-blue')
+        window = ctk.CTk()
+        width_window = window.winfo_screenwidth()-10
+        height_window = window.winfo_screenheight()-80
+        window.geometry("{0}x{1}+0+0".format(width_window, height_window))
+        window.title('Test Main Page')
+        window.grid_columnconfigure([0,1,2], weight=1)
+        window.grid_rowconfigure([0,1,2], weight=1)
         
-        window = tk.Tk()
-        window.resizable(False, False)
-        window.title('Test Application GUI Window Face Recognition')
-        window.eval('tk::PlaceWindow . center')
-        
-        choose_active_label = tk.Label(window, 
+        choose_active_label = ctk.CTkLabel(master=window, 
                               text="Choose Your Active", 
-                              font=("Leelawadee", 30) ,
+                              font=("Leelawadee", 35),
                               padx=100, pady=10)
-        choose_active_label.pack()
+        choose_active_label.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+        choose_active_label.grid(row=0, column=1, padx=20, pady=10)
         
         #Buttons for each page
         #Buttons for add student data page
-        MainPage.createLabel(window,"Student Data Collect")
-        MainPage.createButton(window,
+        student_data_frame = ctk.CTkFrame(master=window)
+        student_data_frame.grid(row=1, column=0, padx=20, pady=10)
+        student_data_label = MainPage.createLabel(student_data_frame,"Student Data Collect")
+        student_data_label.grid(row=0, column=0, padx=20, pady=10)
+        student_data_button = MainPage.createButton(student_data_frame,
                               "Student Data Collect",
                               command=lambda: MainPage.button_click(window,self.course_id,1))
+        student_data_button.grid(row=1, column=0, padx=20, pady=(0,30))
         
-        MainPage.createLabel(window,"Student Face Collect")
-        MainPage.createButton(window,
+        face_collect_frame = ctk.CTkFrame(master=window)
+        face_collect_frame.grid(row=2, column=0, padx=20, pady=10)
+        face_collect_label = MainPage.createLabel(face_collect_frame,"Student Face Collect")
+        face_collect_label.grid(row=0, column=0, padx=20, pady=10)
+        face_collect_button = MainPage.createButton(face_collect_frame,
                               "Student Face Collect",
                               command=lambda: MainPage.button_click(window,self.course_id,2))
-        MainPage.createLabel(window,"Face Train")
-        MainPage.createButton(window,
+        face_collect_button.grid(row=1, column=0, padx=20, pady=(0,30))
+
+        face_train_frame = ctk.CTkFrame(master=window)
+        face_train_frame.grid(row=1, column=1, padx=20, pady=10)
+        face_train_label = MainPage.createLabel(face_train_frame,"Face Train")
+        face_train_label.grid(row=0, column=0, padx=20, pady=10)
+        face_train_button = MainPage.createButton(face_train_frame,
                               "Face Train",
                               command=lambda: MainPage.button_click(window,self.course_id,3))
-        #Buttons for face recognition page
-        MainPage.createLabel(window,"Face Recognition")
-        MainPage.createButton(window,
+        face_train_button.grid(row=1, column=0, padx=20, pady=(0,30))
+
+        face_recog_frame = ctk.CTkFrame(master=window)
+        face_recog_frame.grid(row=2, column=1, padx=20, pady=10)
+        face_recog_label = MainPage.createLabel(face_recog_frame,"Face Recognition")
+        face_recog_label.grid(row=0, column=0, padx=20, pady=10)
+        face_recog_button = MainPage.createButton(face_recog_frame,
                               "Face Recognition",
                               command=lambda: MainPage.button_click(window,self.course_id,4))
-        
-        MainPage.createLabel(window,"Time Attemdance")
-        MainPage.createButton(window,
+        face_recog_button.grid(row=1, column=0, padx=20, pady=(0,30))
+
+        time_attempdance_frame = ctk.CTkFrame(master=window)
+        time_attempdance_frame.grid(row=1, column=2, padx=20, pady=10)
+        time_attempdance_label = MainPage.createLabel(time_attempdance_frame,"Time Attemdance")
+        time_attempdance_label.grid(row=0, column=0, padx=20, pady=10)
+        time_attempdance_button = MainPage.createButton(time_attempdance_frame,
                               "Time Attemdance",
                               command=lambda: MainPage.button_click(window,self.course_id,5))
+        time_attempdance_button.grid(row=1, column=0, padx=20, pady=(0,30))
 
-        back_button = tk.Button(window,foreground="red",background='white',
-                                text="Back To Input Course ID",
-                                height=2,width=10,padx=80,
-                                font=("Leelawadee", 10, "bold"),
+        back_button = ctk.CTkButton(master=window,
+                                    fg_color="#f8f8f8",
+                                text="Back",
+                                text_color="black",
+                                height=60, width=200,
+                                font=("Leelawadee", 30, "bold", ),
                                 command=lambda: MainPage.button_click(window,self.course_id,6))
-        back_button.pack(pady=10)
+        back_button.grid(row=3, column=2, padx=20, pady=30)
         
         window.mainloop()
+
+if __name__ == "__main__":
+    MainPage('test')

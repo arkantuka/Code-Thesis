@@ -1,0 +1,1793 @@
+
+
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:x="urn:schemas-microsoft-com:office:excel"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-874">
+<meta name=ProgId content=Excel.Sheet>
+<meta name=Generator content="Microsoft Excel 11">
+<link rel=File-List href="studentInClass_files/filelist.xml">
+<link rel=Edit-Time-Data href="studentInClass_files/editdata.mso">
+<link rel=OLE-Object-Data href="studentInClass_files/oledata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+x\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>DEV</o:Author>
+  <o:LastAuthor>DEV</o:LastAuthor>
+  <o:Created>2011-01-10T06:48:56Z</o:Created>
+  <o:LastSaved>2011-01-10T07:03:00Z</o:LastSaved>
+  <o:Company>VN</o:Company>
+  <o:Version>11.9999</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+<style>
+<!--table
+	{mso-displayed-decimal-separator:"\.";
+	mso-displayed-thousand-separator:"\,";}
+@page
+	{margin:1.0in .75in 1.0in .75in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;}
+.font8
+	{color:windowtext;
+	font-size:16.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;}
+.font9
+	{color:windowtext;
+	font-size:16.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;}
+.font11
+	{color:windowtext;
+	font-size:14.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;}
+.font12
+	{color:windowtext;
+	font-size:14.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;}
+.font13
+	{color:black;
+	font-size:14.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;}
+.font14
+	{color:black;
+	font-size:14.0pt;
+	font-weight:700;
+	font-style:normal;
+	text-decoration:none;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;}
+tr
+	{mso-height-source:auto;}
+col
+	{mso-width-source:auto;}
+br
+	{mso-data-placement:same-cell;}
+.style0
+	{mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	white-space:nowrap;
+	mso-rotate:0;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:222;
+	border:none;
+	mso-protection:locked visible;
+	mso-style-name:Normal;
+	mso-style-id:0;}
+td
+	{mso-style-parent:style0;
+	padding:0px;
+	mso-ignore:padding;
+	color:windowtext;
+	font-size:10.0pt;
+	font-weight:400;
+	font-style:normal;
+	text-decoration:none;
+	font-family:Arial;
+	mso-generic-font-family:auto;
+	mso-font-charset:222;
+	mso-number-format:General;
+	text-align:general;
+	vertical-align:bottom;
+	border:none;
+	mso-background-source:auto;
+	mso-pattern:auto;
+	mso-protection:locked visible;
+	white-space:nowrap;
+	mso-rotate:0;}
+.xl24
+	{mso-style-parent:style0;
+	font-size:14.0pt;
+	font-weight:700;
+	font-family:"Times New Roman", serif;
+	mso-font-charset:0;
+	white-space:normal;}
+.xl27
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:"Times New Roman", serif;
+	mso-font-charset:0;
+	vertical-align:top;
+	border-top:1.0pt solid windowtext;
+	border-right:1.0pt solid windowtext;
+	border-bottom:none;
+	border-left:1.0pt solid windowtext;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl28
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:none;
+	border-right:1.0pt solid windowtext;
+	border-bottom:1.0pt solid windowtext;
+	border-left:1.0pt solid windowtext;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl29
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:1.0pt solid windowtext;
+	border-right:1.0pt solid windowtext;
+	border-bottom:none;
+	border-left:none;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl30
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:none;
+	border-right:1.0pt solid windowtext;
+	border-bottom:1.0pt solid windowtext;
+	border-left:none;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl31
+	{mso-style-parent:style0;
+	font-size:26.0pt;
+	font-weight:700;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:right;
+	white-space:normal;}
+.xl32
+	{mso-style-parent:style0;
+	font-size:16.0pt;
+	font-weight:700;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:right;
+	white-space:normal;}
+.xl34
+	{mso-style-parent:style0;
+	font-size:14.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	vertical-align:top;
+	white-space:normal;}
+.xl35
+	{mso-style-parent:style0;
+	color:black;
+	font-size:14.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	vertical-align:top;
+	white-space:normal;}
+.xl36
+	{mso-style-parent:style0;
+	color:black;
+	font-size:14.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	vertical-align:top;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.0pt solid windowtext;
+	border-left:none;
+	white-space:normal;}
+.xl39
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.0pt solid windowtext;
+	border-left:1.0pt solid windowtext;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl42
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	border-top:1.0pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:1.0pt solid windowtext;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl44
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	border-top:none;
+	border-right:none;
+	border-bottom:1.0pt solid windowtext;
+	border-left:1.0pt solid windowtext;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl47
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-weight:700;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:1.0pt solid windowtext;
+	border-right:none;
+	border-bottom:1.0pt solid windowtext;
+	border-left:1.0pt solid windowtext;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl50
+	{mso-style-parent:style0;
+	color:black;
+	font-size:11.0pt;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:center;
+	vertical-align:top;
+	border-top:1.0pt solid windowtext;
+	border-right:1.0pt solid windowtext;
+	border-bottom:1.0pt solid windowtext;
+	border-left:none;
+	background:silver;
+	mso-pattern:auto gray-25;
+	white-space:normal;}
+.xl51
+	{mso-style-parent:style0;
+	text-align:center;
+	border-top:none;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;}
+.xl52
+	{mso-style-parent:style0;
+	font-size:26.0pt;
+	font-weight:700;
+	font-family:CordiaUPC, sans-serif;
+	mso-font-charset:0;
+	text-align:left;
+	vertical-align:middle;
+	white-space:normal;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <x:ExcelWorkbook>
+  <x:ExcelWorksheets>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet1</x:Name>
+    <x:WorksheetOptions>
+     <x:Print>
+      <x:ValidPrinterInfo/>
+      <x:PaperSizeIndex>9</x:PaperSizeIndex>
+      <x:HorizontalResolution>-3</x:HorizontalResolution>
+      <x:VerticalResolution>0</x:VerticalResolution>
+     </x:Print>
+     <x:Selected/>
+     <x:Panes>
+      <x:Pane>
+       <x:Number>3</x:Number>
+       <x:ActiveCol>8</x:ActiveCol>
+       <x:RangeSelection>$I$1:$Z$1</x:RangeSelection>
+      </x:Pane>
+     </x:Panes>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet2</x:Name>
+    <x:WorksheetOptions>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+   <x:ExcelWorksheet>
+    <x:Name>Sheet3</x:Name>
+    <x:WorksheetOptions>
+     <x:ProtectContents>False</x:ProtectContents>
+     <x:ProtectObjects>False</x:ProtectObjects>
+     <x:ProtectScenarios>False</x:ProtectScenarios>
+    </x:WorksheetOptions>
+   </x:ExcelWorksheet>
+  </x:ExcelWorksheets>
+  <x:WindowHeight>9525</x:WindowHeight>
+  <x:WindowWidth>15315</x:WindowWidth>
+  <x:WindowTopX>360</x:WindowTopX>
+  <x:WindowTopY>75</x:WindowTopY>
+  <x:ProtectStructure>False</x:ProtectStructure>
+  <x:ProtectWindows>False</x:ProtectWindows>
+ </x:ExcelWorkbook>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body link=blue vlink=purple>
+
+<table x:str border=0 cellpadding=0 cellspacing=0 width=1200 style='border-collapse:
+ collapse;table-layout:fixed;width:890pt'>
+ <col width=66 style='mso-width-source:userset;mso-width-alt:2413;width:50pt'>
+ <col width=19 style='mso-width-source:userset;mso-width-alt:694;width:14pt'>
+ <col width=79 style='mso-width-source:userset;mso-width-alt:2889;width:59pt'>
+ <col width=64 span=24 style='width:48pt'>
+ <tr height=51 style='mso-height-source:userset;height:38.25pt'>
+  <td height=51 width=66 style='height:38.25pt;width:50pt' align=left
+  valign=top>
+<span style='mso-ignore:vglayout2'>
+  <table cellpadding=0 cellspacing=0>
+   <tr>
+    <td height=51 class=xl24 width=66 style='height:38.25pt;width:50pt'></td>
+   </tr>
+  </table>
+  </span></td>
+  <td class=xl24 width=19 style='width:14pt'></td>
+  <td colspan=6 rowspan=3 class=xl52 width=399 style='width:299pt;padding-bottom:
+  0cm;padding-top:0cm'>มหาวิทยาลัยศิลปากร</span></td>
+  <td colspan=17 class=xl31 width=480 style='width:400pt;padding-bottom:0cm;
+  padding-top:0cm'>รายชื่อนศ.ในรายวิชาที่สอน</td>
+ </tr>
+ <tr height=31 style='mso-height-source:userset;height:23.25pt'>
+  <td height=31 colspan=2 class=xl24 style='height:23.25pt;mso-ignore:colspan'></td>
+  <td colspan=17 class=xl32 width=480 style='width:400pt'>วิทยาเขต&nbsp; </span>
+  พระราชวังสนามจันทร์&nbsp; ปีการศึกษา&nbsp;1/2567</span></td>
+ </tr>
+ <tr height=32 style='mso-height-source:userset;height:24.0pt'>
+  <td height=32 colspan=2 class=xl24 style='height:24.0pt;mso-ignore:colspan'></td>
+  <td colspan=17 class=xl32 width=480 style='width:400pt'>ระดับการศึกษา&nbsp;<font class="font8">ปริญญาตรี<span
+  style='mso-spacerun:yes'>&nbsp;&nbsp;</span></font></td>
+ </tr>
+ <tr height=25 style='height:18.75pt;mso-row-margin-right:7.3pt;mso-yfti-irow:
+  1;page-break-inside:avoid'>
+  <td colspan=25 height=25 width=890 style='height:18.75pt;width:880pt;
+  padding-bottom:0cm;padding-top:0cm' align=left valign=top><!--[if gte vml 1]><v:line
+   id="_x0000_s1025" style='position:absolute;z-index:2;
+   mso-position-horizontal-relative:text;mso-position-vertical-relative:text'
+   from="7.5pt,9pt" to="785.25pt,9pt" o:allowincell="f"/><![endif]--><![if !vml]><span
+  style='mso-ignore:vglayout;position:absolute;z-index:2;margin-left:9px;
+  margin-top:11px;width:890px;height:2px'><img width=880 height=2
+  src="studentInClass_files/image003.gif" v:shapes="_x0000_s1025"></span><![endif]><span
+  style='mso-ignore:vglayout2'>
+  </span></td>
+ </tr>
+ <tr height=29 style='mso-height-source:userset;height:21.75pt;mso-row-margin-right:
+  7.3pt;mso-yfti-irow:2;page-break-inside:avoid'>
+  <td colspan=9 height=29 class=xl34 align=left width=548 style='height:21.75pt;
+  width:411pt;padding-bottom:0cm;padding-top:0cm'>รายวิชา<font
+  class="font12">&nbsp;517121-165 COMPUTER PROGRAMMING SKILL I </font><font class="font13">หน่วยกิต</font><font
+  class="font14"> 4 (2-4-6) </font><font class="font11"> กลุ่มที่ </font><font
+  class="font12">1</font></td>
+  <td colspan=16 class=xl35 align=left width=480 style='width:400pt;
+  padding-bottom:0cm;padding-top:0cm'><span lang=TH>ผู้สอน<font class="font14">
+   ผู้ช่วยศาสตราจารย์ ดร.สิรักข์ แก้วจำนงค์, อาจารย์ ดร.ปัญญนัท อ้นพงษ์, อาจารย์ณัฐพงศ์ แตงจุ้ย</font></span></td>
+ </tr>
+ <tr height=30 style='mso-height-source:userset;height:22.5pt;mso-row-margin-right:
+  7.3pt;mso-yfti-irow:3;page-break-inside:avoid'>
+  <td colspan=9 height=30 class=xl36 align=left width=548 style='height:22.5pt;
+  width:411pt;padding-bottom:0cm;padding-top:0cm'><span lang=TH>วันเวลาเรียน<font
+  class="font14"><span style='mso-spacerun:yes'>&nbsp; </span> Mon 9:25-12:05 ร.วท.2, Tue 13:00-14:45 1227/1,1227/2 ว.1, Thu 13:00-14:45 1227/1,1227/2 ว.1, Fri 16:40-18:25 1227/1,1227/2 ว.1</font></span></td>
+  <td colspan=16 class=xl36 align=left width=480 style='width:400pt;
+  padding-bottom:0cm;padding-top:0cm'>วันเวลาสอบ<font
+  class="font14"> M1 02/09/24 09:00-12:00, M2 02/09/24 13:00-17:00, M2 02/09/24 13:00-17:00, M2 02/09/24 13:00-17:00, F1 01/11/24 09:00-12:00, F2 01/11/24 13:30-17:30, M2 02/09/24 13:00-17:00, M2 02/09/24 13:00-17:00</font></td>
+ </tr>
+ <tr height=24 style='height:18.0pt'>
+  <td height=24 class=xl27 width=66 style='height:18.0pt;border-top:none;
+  width:50pt'>&nbsp;</td>
+  <td colspan=2 class=xl47 width=98 style='border-right:1.0pt solid black;
+  border-left:none;width:73pt'>&nbsp;</td>
+  <td colspan=3 class=xl29 width=192 style='border-top:none;width:48pt'>&nbsp;</td>
+  <td colspan=2 rowspan=2 class=xl42 width=128 style='border-right:1.0pt solid black;
+  border-bottom:1.0pt solid black;width:96pt' x:str="เอก "><span lang=TH>เอก<span
+  style='mso-spacerun:yes'>&nbsp;</span></span></td>
+  <td class=xl42 width=64 style='border-right:1.0pt solid black;
+  border-left:none;width:144pt'>&nbsp;</td>
+  <td colspan=16 class=xl47 width=480 style='border-right:1.0pt solid black;
+  border-left:none;width:400pt'>สัปดาห์</td>
+ </tr>
+ <tr height=24 style='height:18.0pt'>
+  <td height=24 class=xl28 width=66 style='height:18.0pt;width:50pt'>เลขที่</td>
+  <td colspan=2 class=xl39 width=98 style='border-right:1.0pt solid black;
+  border-left:none;width:73pt'>รหัสประจำตัว</td>
+  <td colspan=3 class=xl30 width=192 style='width:48pt'>ชื่อ</td>
+  <td class=xl44 width=64 style='border-right:1.0pt solid black;
+  border-left:none;width:144pt'>จาก</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>1</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>2</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>3</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>4</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>5</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>6</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>7</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>8</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>9</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>10</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>11</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>12</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>13</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>14</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>15</td>
+  <td class=xl30 width=30 style='width:22pt' x:num>16</td>
+ </tr> 
+
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt' colspan=27>วิทยาศาสตร์</td>
+ </tr>
+	
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>1</td>
+  <td colspan=2 class=xl51>&nbsp;650710151</td>
+  <td colspan=3>นางสาวกรณิการ์ เต้นลือ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>2</td>
+  <td colspan=2 class=xl51>&nbsp;650710154</td>
+  <td colspan=3>นางสาวกิตติมา ดารา</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>3</td>
+  <td colspan=2 class=xl51>&nbsp;650710157</td>
+  <td colspan=3>นางสาวณิชาพัฒน์ ปฐมพรวิวัฒน์</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>4</td>
+  <td colspan=2 class=xl51>&nbsp;650710167</td>
+  <td colspan=3>นายอัครพนธ์ อุดมทรัพย์</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>5</td>
+  <td colspan=2 class=xl51>&nbsp;650710169</td>
+  <td colspan=3>นางสาวอัจฉรียา ทองมาก</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>6</td>
+  <td colspan=2 class=xl51>&nbsp;650710235</td>
+  <td colspan=3>นายธนชาติ เอื้อยอ่อง</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>7</td>
+  <td colspan=2 class=xl51>&nbsp;650710238</td>
+  <td colspan=3>นายศิวัช จำรูญศิริรุ่งโรจน์</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>8</td>
+  <td colspan=2 class=xl51>&nbsp;650710680</td>
+  <td colspan=3>นางสาวชุติมา สหพรอุดมการ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>9</td>
+  <td colspan=2 class=xl51>&nbsp;650710683</td>
+  <td colspan=3>นางสาวณฐพร สุขเจริญพรกุล</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>10</td>
+  <td colspan=2 class=xl51>&nbsp;650710728</td>
+  <td colspan=3>นางสาวสุภัทรา เค้าสำราญ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>11</td>
+  <td colspan=2 class=xl51>&nbsp;650710729</td>
+  <td colspan=3>นางสาวสุภีร์กิติ์ พันธุ์บุญปลูก</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>12</td>
+  <td colspan=2 class=xl51>&nbsp;650710730</td>
+  <td colspan=3>นางสาวอคัมย์สิริ ฉุยเนย</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>13</td>
+  <td colspan=2 class=xl51>&nbsp;650710736</td>
+  <td colspan=3>นางสาวอินทิรา ภู่ขำ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>14</td>
+  <td colspan=2 class=xl51>&nbsp;650710860</td>
+  <td colspan=3>นายจิรสิน รุ่งเรืองด้วยบุญ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>15</td>
+  <td colspan=2 class=xl51>&nbsp;650710861</td>
+  <td colspan=3>นายเจษฎาพร อมรจิตรเวชกุล</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>16</td>
+  <td colspan=2 class=xl51>&nbsp;650710866</td>
+  <td colspan=3>นายณัฐพล ปินะสา</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>17</td>
+  <td colspan=2 class=xl51>&nbsp;650710867</td>
+  <td colspan=3>นางสาวดวงพร โคตมี</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>18</td>
+  <td colspan=2 class=xl51>&nbsp;650710868</td>
+  <td colspan=3>นางสาวธมกร นันทเศรษฐสิริ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>19</td>
+  <td colspan=2 class=xl51>&nbsp;650710873</td>
+  <td colspan=3>นายภูริภัทร ลิสอน</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>20</td>
+  <td colspan=2 class=xl51>&nbsp;650710915</td>
+  <td colspan=3>นางสาวรัตนาวดี เมตตา</td>
+  <td colspan=2 class=xl51>&nbsp;PHYSICS</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>21</td>
+  <td colspan=2 class=xl51>&nbsp;660710073</td>
+  <td colspan=3>นายจักรภพ ภูมิพัฒน์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>22</td>
+  <td colspan=2 class=xl51>&nbsp;660710079</td>
+  <td colspan=3>นายณทรรศน์ พรหมประดิษฐ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>23</td>
+  <td colspan=2 class=xl51>&nbsp;660710082</td>
+  <td colspan=3>นายธนากร จุลเจริญ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>24</td>
+  <td colspan=2 class=xl51>&nbsp;660710088</td>
+  <td colspan=3>นางสาวนิภาวรรณ จันทรังศรี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>25</td>
+  <td colspan=2 class=xl51>&nbsp;660710090</td>
+  <td colspan=3>นายพฤกษินันท์ คำระหงษ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>26</td>
+  <td colspan=2 class=xl51>&nbsp;660710102</td>
+  <td colspan=3>นายสุธิสิทธิ์ กลิ่นพยอม</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>27</td>
+  <td colspan=2 class=xl51>&nbsp;660710108</td>
+  <td colspan=3>นายจักรกฤช คิดดี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>28</td>
+  <td colspan=2 class=xl51>&nbsp;660710109</td>
+  <td colspan=3>นายณัฐพงษ์ กอรักงาม</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>29</td>
+  <td colspan=2 class=xl51>&nbsp;660710247</td>
+  <td colspan=3>นายปวรภพ ตันไพบูลย์</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>30</td>
+  <td colspan=2 class=xl51>&nbsp;660710249</td>
+  <td colspan=3>นางสาวพลอยไพลิน กว้านวิพิธกาญจน์</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>31</td>
+  <td colspan=2 class=xl51>&nbsp;660710251</td>
+  <td colspan=3>นายภูริ พุ่มจิตร</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>32</td>
+  <td colspan=2 class=xl51>&nbsp;660710252</td>
+  <td colspan=3>นางสาววริศราภรณ์ กันชัยต๊ะ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>33</td>
+  <td colspan=2 class=xl51>&nbsp;660710487</td>
+  <td colspan=3>นางสาวธนวรรณ ลิ้มฉาย</td>
+  <td colspan=2 class=xl51>&nbsp;PHYSICS</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>34</td>
+  <td colspan=2 class=xl51>&nbsp;660710626</td>
+  <td colspan=3>นายรชต กระเช้าเพ็ชร์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>35</td>
+  <td colspan=2 class=xl51>&nbsp;660710707</td>
+  <td colspan=3>นางสาวณัฐกฤตา เพ็ชรคง</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>36</td>
+  <td colspan=2 class=xl51>&nbsp;660710747</td>
+  <td colspan=3>นายอณัสวาร์ อ่องมะลิ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>37</td>
+  <td colspan=2 class=xl51>&nbsp;660710748</td>
+  <td colspan=3>นางสาวอธิชา กิจเจริญ</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>38</td>
+  <td colspan=2 class=xl51>&nbsp;660710755</td>
+  <td colspan=3>นายณัฐธัญ เริงหทัยธรรม</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>39</td>
+  <td colspan=2 class=xl51>&nbsp;660710757</td>
+  <td colspan=3>นายณัฐสิทธิ์ หุ่นปั้น</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>40</td>
+  <td colspan=2 class=xl51>&nbsp;660710772</td>
+  <td colspan=3>นายศตายุ ไชยงาม</td>
+  <td colspan=2 class=xl51>&nbsp;INFORMATION TECHNOLOGY</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>41</td>
+  <td colspan=2 class=xl51>&nbsp;660710976</td>
+  <td colspan=3>นายจักรพรรดิ โพธิพิภัทรกุล</td>
+  <td colspan=2 class=xl51>&nbsp;DATA SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;1</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>42</td>
+  <td colspan=2 class=xl51>&nbsp;670710121</td>
+  <td colspan=3>นายกฤตเมธ ไทยภักดี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>43</td>
+  <td colspan=2 class=xl51>&nbsp;670710122</td>
+  <td colspan=3>นางสาวกัญญรัชต์ สมหวังพรเจริญ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>44</td>
+  <td colspan=2 class=xl51>&nbsp;670710123</td>
+  <td colspan=3>นางสาวกัญญาณัฐ เขมนรากร</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>45</td>
+  <td colspan=2 class=xl51>&nbsp;670710124</td>
+  <td colspan=3>นายคมสัน กลิ่นหอม</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>46</td>
+  <td colspan=2 class=xl51>&nbsp;670710125</td>
+  <td colspan=3>นายฐิติพงศ์ ราชธานี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>47</td>
+  <td colspan=2 class=xl51>&nbsp;670710126</td>
+  <td colspan=3>นายณัฏฐ์ธเนศ กุนทรฐิติวัสส์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>48</td>
+  <td colspan=2 class=xl51>&nbsp;670710127</td>
+  <td colspan=3>นายณัฐพงศ์ อวชัย</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>49</td>
+  <td colspan=2 class=xl51>&nbsp;670710128</td>
+  <td colspan=3>นางสาวธนัญญา พรมภักดี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>50</td>
+  <td colspan=2 class=xl51>&nbsp;670710129</td>
+  <td colspan=3>นางสาวธารทิพย์ แสงสูงเนิน</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>51</td>
+  <td colspan=2 class=xl51>&nbsp;670710130</td>
+  <td colspan=3>นายธีทัต สุจริตพาณิช</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>52</td>
+  <td colspan=2 class=xl51>&nbsp;670710131</td>
+  <td colspan=3>นายนทิบดี ช้างทอง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>53</td>
+  <td colspan=2 class=xl51>&nbsp;670710132</td>
+  <td colspan=3>นายนนธวัช งามบุญศิริสิงห์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>54</td>
+  <td colspan=2 class=xl51>&nbsp;670710133</td>
+  <td colspan=3>นายนวภูมิ ปั้นหลวง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>55</td>
+  <td colspan=2 class=xl51>&nbsp;670710134</td>
+  <td colspan=3>นายปฏิภาณ นิลวงค์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>56</td>
+  <td colspan=2 class=xl51>&nbsp;670710135</td>
+  <td colspan=3>นายปรเมทร์ ฟองดา</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>57</td>
+  <td colspan=2 class=xl51>&nbsp;670710136</td>
+  <td colspan=3>นายปิยวัฒน์ เดียนประไพ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>58</td>
+  <td colspan=2 class=xl51>&nbsp;670710137</td>
+  <td colspan=3>นายพงศ์ชยุตม์ หัวใจเพ็ชร์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>59</td>
+  <td colspan=2 class=xl51>&nbsp;670710138</td>
+  <td colspan=3>นายพชรพล อาจม่วง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>60</td>
+  <td colspan=2 class=xl51>&nbsp;670710139</td>
+  <td colspan=3>นายพิชัยพร พลบเนียม</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>61</td>
+  <td colspan=2 class=xl51>&nbsp;670710140</td>
+  <td colspan=3>นายภัทรดนัย คนชม</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>62</td>
+  <td colspan=2 class=xl51>&nbsp;670710141</td>
+  <td colspan=3>นายวีรชิต มงคล</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>63</td>
+  <td colspan=2 class=xl51>&nbsp;670710142</td>
+  <td colspan=3>นายวุฒิชัย หลักเพชร</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>64</td>
+  <td colspan=2 class=xl51>&nbsp;670710143</td>
+  <td colspan=3>นางสาวศุภิสรา สอนดี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>65</td>
+  <td colspan=2 class=xl51>&nbsp;670710144</td>
+  <td colspan=3>นายจารุเดช พินิตศักดา</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>66</td>
+  <td colspan=2 class=xl51>&nbsp;670710145</td>
+  <td colspan=3>นางสาวชัชชา เภาเสน</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>67</td>
+  <td colspan=2 class=xl51>&nbsp;670710146</td>
+  <td colspan=3>นางสาวชัญญา เถระสวัสดิ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>68</td>
+  <td colspan=2 class=xl51>&nbsp;670710148</td>
+  <td colspan=3>นายภัทรกฤต สังครบ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>69</td>
+  <td colspan=2 class=xl51>&nbsp;670710149</td>
+  <td colspan=3>นายศุภณัฐ วิริยะนรอนันต์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>70</td>
+  <td colspan=2 class=xl51>&nbsp;670710150</td>
+  <td colspan=3>นายสิรวิชญ์ ปิ่นแสง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>71</td>
+  <td colspan=2 class=xl51>&nbsp;670710151</td>
+  <td colspan=3>นางสาวสิริญญาธร ปุณกะบุตร</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>72</td>
+  <td colspan=2 class=xl51>&nbsp;670710152</td>
+  <td colspan=3>นายอังกฤษ ถ้ำสุวรรณ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>73</td>
+  <td colspan=2 class=xl51>&nbsp;670710153</td>
+  <td colspan=3>นายภูริณัฐ สุวรรณสังโส</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>74</td>
+  <td colspan=2 class=xl51>&nbsp;670710258</td>
+  <td colspan=3>Mr.SOTHEA SOKEA</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>75</td>
+  <td colspan=2 class=xl51>&nbsp;670710259</td>
+  <td colspan=3>Mr.UDTARAKVISETH LAY</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>76</td>
+  <td colspan=2 class=xl51>&nbsp;670710290</td>
+  <td colspan=3>นายกรันต์ชัย คำทรัพย์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>77</td>
+  <td colspan=2 class=xl51>&nbsp;670710291</td>
+  <td colspan=3>นางสาวณัฐณิชา ภู่วงษ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>78</td>
+  <td colspan=2 class=xl51>&nbsp;670710292</td>
+  <td colspan=3>นายเทพพิทักษ์ นิลดำ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>79</td>
+  <td colspan=2 class=xl51>&nbsp;670710293</td>
+  <td colspan=3>นายปภังกร มงคลนรกิจ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>80</td>
+  <td colspan=2 class=xl51>&nbsp;670710294</td>
+  <td colspan=3>นางสาวศิริกานต์ หรุ่นมาบแค</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>81</td>
+  <td colspan=2 class=xl51>&nbsp;670710295</td>
+  <td colspan=3>นายโสภณวิชญ์ แซ่เล้า</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>82</td>
+  <td colspan=2 class=xl51>&nbsp;670710296</td>
+  <td colspan=3>นายสิรวิชญ์ เชี่ยวชาญ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>83</td>
+  <td colspan=2 class=xl51>&nbsp;670710619</td>
+  <td colspan=3>นายกันต์ธร บุตรเบ้า</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>84</td>
+  <td colspan=2 class=xl51>&nbsp;670710620</td>
+  <td colspan=3>นางสาวฉันทณัฏฐ วิชพันธุ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>85</td>
+  <td colspan=2 class=xl51>&nbsp;670710621</td>
+  <td colspan=3>นางสาวณัฐกฤตา บุญมี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>86</td>
+  <td colspan=2 class=xl51>&nbsp;670710622</td>
+  <td colspan=3>นายณัฐวีร์ บุญยินดี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>87</td>
+  <td colspan=2 class=xl51>&nbsp;670710623</td>
+  <td colspan=3>นายณัฐวุฒิ โตเมือง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>88</td>
+  <td colspan=2 class=xl51>&nbsp;670710624</td>
+  <td colspan=3>นางสาวณัฐสุดา ลานตวน</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>89</td>
+  <td colspan=2 class=xl51>&nbsp;670710625</td>
+  <td colspan=3>นางสาวณัฐสุรางค์ ชาติทองคำ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>90</td>
+  <td colspan=2 class=xl51>&nbsp;670710626</td>
+  <td colspan=3>นายธนเทพ นาสวน</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>91</td>
+  <td colspan=2 class=xl51>&nbsp;670710627</td>
+  <td colspan=3>นายนพรัตน์ นรนิล</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>92</td>
+  <td colspan=2 class=xl51>&nbsp;670710628</td>
+  <td colspan=3>นายปธานิน พรรณหาญ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>93</td>
+  <td colspan=2 class=xl51>&nbsp;670710629</td>
+  <td colspan=3>นางสาวปริยากร คาวิน</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>94</td>
+  <td colspan=2 class=xl51>&nbsp;670710630</td>
+  <td colspan=3>นางสาวพิชญธิดา รักดี</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>95</td>
+  <td colspan=2 class=xl51>&nbsp;670710631</td>
+  <td colspan=3>นายภาธร นานช้า</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>96</td>
+  <td colspan=2 class=xl51>&nbsp;670710632</td>
+  <td colspan=3>นายรัชชานนท์ เจริญรมย์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>97</td>
+  <td colspan=2 class=xl51>&nbsp;670710633</td>
+  <td colspan=3>นายรามิล แคใหญ่</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>98</td>
+  <td colspan=2 class=xl51>&nbsp;670710634</td>
+  <td colspan=3>นายวีรศิลป์ ลีนาวงศ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>99</td>
+  <td colspan=2 class=xl51>&nbsp;670710635</td>
+  <td colspan=3>นายสิปปกร ทองนุ่ม</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>100</td>
+  <td colspan=2 class=xl51>&nbsp;670710636</td>
+  <td colspan=3>นางสาวอชิรญา สมใจ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>101</td>
+  <td colspan=2 class=xl51>&nbsp;670710637</td>
+  <td colspan=3>นางสาวอนัญญณัชช์ ขจรศิริผล</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>102</td>
+  <td colspan=2 class=xl51>&nbsp;670710638</td>
+  <td colspan=3>นายกฤติน เหลืองระลึก</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>103</td>
+  <td colspan=2 class=xl51>&nbsp;670710639</td>
+  <td colspan=3>นายก้องภพ คุณดำรงชัย</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>104</td>
+  <td colspan=2 class=xl51>&nbsp;670710640</td>
+  <td colspan=3>นายกิติภูมิ จันทร์จารุวัฒน์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>105</td>
+  <td colspan=2 class=xl51>&nbsp;670710641</td>
+  <td colspan=3>นายคีรเทพ ก้องสุวรรณ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>106</td>
+  <td colspan=2 class=xl51>&nbsp;670710642</td>
+  <td colspan=3>นางสาวจิณณพัต แหล่งหล้า</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>107</td>
+  <td colspan=2 class=xl51>&nbsp;670710643</td>
+  <td colspan=3>นางสาวจุฑารัตน์ รู้วงษ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>108</td>
+  <td colspan=2 class=xl51>&nbsp;670710645</td>
+  <td colspan=3>นายชาญวุฒิ งามยิ่ง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>109</td>
+  <td colspan=2 class=xl51>&nbsp;670710646</td>
+  <td colspan=3>นายณัฐชนน รักวงศ์</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>110</td>
+  <td colspan=2 class=xl51>&nbsp;670710647</td>
+  <td colspan=3>นางสาวณัฐฐาพร เสตะวีระ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>111</td>
+  <td colspan=2 class=xl51>&nbsp;670710648</td>
+  <td colspan=3>นายณัฐดนัย ศรีไวย</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>112</td>
+  <td colspan=2 class=xl51>&nbsp;670710649</td>
+  <td colspan=3>นายทศวรรษ คำบุญเรือง</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>113</td>
+  <td colspan=2 class=xl51>&nbsp;670710651</td>
+  <td colspan=3>นายพรรสวกร สมใจ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>114</td>
+  <td colspan=2 class=xl51>&nbsp;670710652</td>
+  <td colspan=3>นายวรท ลักษณะ</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>115</td>
+  <td colspan=2 class=xl51>&nbsp;670710653</td>
+  <td colspan=3>นายวีรภัทร พิริยะสถิต</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=17 style='height:12.75pt'>116</td>
+  <td colspan=2 class=xl51>&nbsp;670710654</td>
+  <td colspan=3>นางสาวอาธารดา พรหมแทนสุด</td>
+  <td colspan=2 class=xl51>&nbsp;COMPUTER SCIENCE</td>
+  <td colspan=1 class=xl51>&nbsp;0</td>
+  <td colspan=18 class=xl51 style='mso-ignore:colspan'></td>
+ </tr>
+
+ 
+
+ <tr height=17 style='height:12.75pt'>
+  <td height=2 style='height:12.75pt'> หมายเหตุ</td>
+  <td colspan=25>&nbsp;จาก</td>
+ </tr>
+  <tr height=17 style='height:12.75pt'>
+  <td height=2 style='height:12.75pt'></td>
+  <td colspan=25>&nbsp;0 : ลงทะเบียน, 1 : เพิ่มรายวิชา, 2 : ถอน, 3 : เปลี่ยนกลุ่ม, 4 : โอนย้ายออก ( จากรายการ 3 ) บันทึกอัตโนมัติเมื่อมีการย้ายกลุ่ม, 5 : เพิ่มหน่วยกิต สำหรับการลงทะเบียนวิชา วิทยานิพนธ์, 6 : ถอนหน่วยกิต สำหรับการลงทะเบียนวิชา วิทยานิพนธ์</td>
+ </tr>
+
+</table>
+</body>
+</html>

@@ -4,14 +4,7 @@ import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
 import main_page as mp
-
-# Center Window
-def center_window(window):
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-    x = (screen_width - window.winfo_reqwidth()) // 2
-    y = (screen_height - window.winfo_reqheight()) // 2
-    window.geometry(f"+{x}+{y}")
+import customtkinter as ctk
     
 # Check New Course for Create CSV
 def checkNewCourse(path, course_id):
@@ -53,36 +46,47 @@ def runCSVWrite(course_id):
     path = 'version.0.3/datasets/data/student_in_course_detail/'
     checkNewCourse(path, course_id)
     
-    window = tk.Tk()
-    window.title('Student Info')
-    window.eval('tk::PlaceWindow . center')
+    ctk.set_appearance_mode('dark')
+    ctk.set_default_color_theme('dark-blue')
+    window = ctk.CTk()
+    window.title('Student Infomations')
+    width_window = window.winfo_screenwidth()-10
+    height_window = window.winfo_screenheight()-80
+    window.geometry("{0}x{1}+0+0".format(width_window, height_window))
+    window.title('Student Infomations')
+    # window.grid_columnconfigure(1, weight=1)
+    # window.grid_rowconfigure([0,1,2,3,4], weight=1)
+    
     
     # Create MainLabel
-    choose_active_label = tk.Label(window, 
+    choose_active_label = ctk.CTkLabel(master=window, 
                               text="Course : "+str(course_id), 
                               font=("Leelawadee", 30) ,
                               padx=100, pady=10)
     choose_active_label.pack()
     
     # Create Frame
-    table_frame = tk.Frame(window)
+    table_frame = ctk.CTkFrame(window)
     table_frame.pack(pady=20)
     # Create Scrollbar
-    tree_scroll = tk.Scrollbar(table_frame)
+    tree_scroll = ctk.CTkScrollbar(table_frame)
     tree_scroll.pack(side='right', fill='y')
     
-    table = ttk.Treeview(table_frame, yscrollcommand=tree_scroll.set, selectmode="extended")
+    table = ttk.Treeview(table_frame, height=20, yscrollcommand=tree_scroll.set, selectmode="extended")
     table.pack()
 
+    style = ttk.Style()
+    style.configure("Treeview.Heading", font=('Leelawadee', 20, 'bold'))
+    
     table['columns'] = ("Student ID", "Name")
     
-    table.column("#0", width=0, stretch='NO')
-    table.column("Student ID", width=100)
-    table.column("Name", width=150)
+    table.column("#0", width=0, stretch='YES')
+    table.column("Student ID", width=150)
+    table.column("Name", width=200)
     
     table.heading("#0", text="", anchor='w')
-    table.heading("Student ID", text="Student ID")
-    table.heading("Name", text="Name")
+    table.heading("Student ID", text="Student ID", anchor='center')
+    table.heading("Name", text="Name", anchor='center')
     
     # Get Student Info
     data = getStudentInfo(path+str(course_id)+'.csv')
