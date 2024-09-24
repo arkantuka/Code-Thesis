@@ -16,30 +16,30 @@ def checkNewCourse(path, course_id):
     if course_id in course_ids:
         return True
     else:
-        with open('version.0.3/datasets/data/student_in_course_detail/'+ course_id +'.csv', mode='w', newline='') as csv_file:
+        with open('version.0.3/datasets/data/student_in_course_detail/'+ course_id +'.csv',encoding="utf8", mode='w', newline='') as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow(['Student ID', 'Name'])
-        with open('version.0.3/datasets/data/attendance/'+ course_id +'_attendence.csv', mode='w', newline='') as csv_file:
+            writer.writerow(['No', 'Student ID', 'Name', 'Major'])
+        with open('version.0.3/datasets/data/attendance/'+ course_id +'_attendence.csv',encoding="utf8", mode='w', newline='') as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow(['Student ID', 'Name', 'Attendence Time'])
+            writer.writerow(['No', 'Student ID', 'Name', 'Major', 'Attendence Time'])
         return False
     
 # Add New Student Info
 def writeData(course_id, data):
-        with open('version.0.3/datasets/data/student_in_course_detail/'+ course_id +'.csv', mode='w', newline='') as csv_file:
+        with open('version.0.3/datasets/data/student_in_course_detail/'+ course_id +'.csv', encoding="utf8", mode='w', newline='') as csv_file:
             writer = csv.writer(csv_file)
-            writer.writerow(['Student ID', 'Name'])
+            writer.writerow(['No', 'Student ID', 'Name', 'Major'])
             for i in range(len(data)):
                 writer.writerow(data[i])
                 
 # Get Student Info           
 def getStudentInfo(path):
-    with open(path, mode='r', newline='') as csv_file:
+    with open(path, encoding="utf8", mode='r', newline='') as csv_file:
         reader = csv.reader(csv_file)
         data = []
         for row in reader:
             data.append(row)
-        return data
+        return data    
         
 # Main Function
 def runCSVWrite(course_id):
@@ -54,9 +54,6 @@ def runCSVWrite(course_id):
     height_window = window.winfo_screenheight()-80
     window.geometry("{0}x{1}+0+0".format(width_window, height_window))
     window.title('Student Infomations')
-    # window.grid_columnconfigure(1, weight=1)
-    # window.grid_rowconfigure([0,1,2,3,4], weight=1)
-    
     
     # Create MainLabel
     choose_active_label = ctk.CTkLabel(master=window, 
@@ -66,49 +63,72 @@ def runCSVWrite(course_id):
     choose_active_label.pack()
     
     # Create Frame
-    table_frame = ctk.CTkFrame(window)
+    table_frame = ctk.CTkFrame(window, width=800, height=500)
     table_frame.pack(pady=20)
+
     # Create Scrollbar
-    tree_scroll = ctk.CTkScrollbar(table_frame)
+    tree_scroll = ctk.CTkScrollbar(table_frame, orientation='vertical')
     tree_scroll.pack(side='right', fill='y')
     
-    table = ttk.Treeview(table_frame, height=20, yscrollcommand=tree_scroll.set, selectmode="extended")
+    table = ttk.Treeview(table_frame, height=25, yscrollcommand=tree_scroll.set, selectmode="extended")
     table.pack()
-
-    style = ttk.Style()
-    style.configure("Treeview.Heading", font=('Leelawadee', 20, 'bold'))
     
-    table['columns'] = ("Student ID", "Name")
+    style = ttk.Style()
+    style.configure("Treeview.Heading", font=('Leelawadee', 15, 'bold'))
+    style.configure("Treeview", font=('Leelawadee', 20), rowheight=30)
+    
+    table['columns'] = ("No","Student ID", "Name", "Major")
     
     table.column("#0", width=0, stretch='YES')
-    table.column("Student ID", width=150)
-    table.column("Name", width=200)
+    table.column("No", width=50)
+    table.column("Student ID", anchor='center')
+    table.column("Name" , width=420)
+    table.column("Major" , width=450)
     
     table.heading("#0", text="", anchor='w')
+    table.heading("No", text="No", anchor='center')
     table.heading("Student ID", text="Student ID", anchor='center')
     table.heading("Name", text="Name", anchor='center')
+    table.heading("Major", text="Major", anchor='center')
     
     # Get Student Info
     data = getStudentInfo(path+str(course_id)+'.csv')
     
+    last_no = 0
     for record in data[1:]:
         table.insert('', 'end', values=record)
+        last_no = last_no + 1
     
-    add_frame = tk.Frame(window)
-    add_frame.pack(pady=20)   
-    id_label = tk.Label(add_frame, text="Student ID")
+    add_frame = ctk.CTkFrame(window)
+    add_frame.pack(pady=20)
+    style.configure("Entry", font=('Leelawadee', 20, 'bold'))
+    id_label = ctk.CTkLabel(add_frame, text="Student ID")
     id_label.grid(row=0, column=0)
-    id_entry = tk.Entry(add_frame)
+    id_entry = ctk.CTkEntry(add_frame, width=200, 
+                            font=('Leelawadee', 20), text_color="black",
+                            placeholder_text="Student ID",
+                            fg_color="#f0f0f0")
     id_entry.grid(row=1, column=0)
-    name_label = tk.Label(add_frame, text="Full Name")
+    name_label = ctk.CTkLabel(add_frame, text="Full Name")
     name_label.grid(row=0, column=1)
-    name_entry = tk.Entry(add_frame)
+    name_entry = ctk.CTkEntry(add_frame, width=420, 
+                              font=('Leelawadee', 20), text_color="black",
+                              placeholder_text="Full Name",
+                              fg_color="#f0f0f0")
     name_entry.grid(row=1, column=1)
+    major_label = ctk.CTkLabel(add_frame, text="Major")
+    major_label.grid(row=0, column=2)
+    major_entry = ctk.CTkEntry(add_frame, width=450, 
+                               font=('Leelawadee', 20), text_color="black",
+                               placeholder_text="Major",
+                               fg_color="#f0f0f0")
+    major_entry.grid(row=1, column=2)
     
     def select_record():
 	    # Clear entry boxes
         id_entry.delete(0, 'end')
         name_entry.delete(0, 'end')
+        major_entry.delete(0, 'end')
 
         # Grab record number
         selected = table.focus()
@@ -116,26 +136,32 @@ def runCSVWrite(course_id):
         values = table.item(selected, 'values')
 
         # output to entry boxes
-        id_entry.insert(0, values[0])
-        name_entry.insert(0, values[1])
+        id_entry.insert(0, values[1])
+        name_entry.insert(0, values[2])
+        major_entry.insert(0, values[3])
 
     # Add Record
     def addInfo():
-        table.insert(parent='', index='end', text="", values=(id_entry.get(), name_entry.get()))
-
+        table.insert(parent='', index='end', text="",
+                     values=(last_no+1,id_entry.get(), name_entry.get(), major_entry.get()))
+        last_no = last_no + 1
+        
         # Clear the boxes
         id_entry.delete(0, 'end')
         name_entry.delete(0, 'end')
+        major_entry.delete(0, 'end')
         
     def update_record():
         # Grab record number
         selected = table.focus()
+        values = table.item(selected, 'values')
         # Save new data
-        table.item(selected, text="", values=(id_entry.get(), name_entry.get()))
+        table.item(selected, text="", values=(values[0],id_entry.get(), name_entry.get(), major_entry.get()))
 
         # Clear entry boxes
         id_entry.delete(0, 'end')
         name_entry.delete(0, 'end')
+        major_entry.delete(0, 'end')
         
     # Delete Items in Table
     def deleteItems():
@@ -153,36 +179,52 @@ def runCSVWrite(course_id):
     
     # Create Buttons
     # Add Button
-    add_info = tk.Button(window, 
-                      height=2,
-                      width=20,
-                      text="Add This Infomation", 
-                      command=addInfo)
+    add_info = ctk.CTkButton(master=window,
+                                    fg_color="#f8f8f8",
+                                text="Add This Infomation",
+                                text_color="black",
+                                height=60, width=300,
+                                font=("Leelawadee", 20),
+                                command=lambda: addInfo())
     add_info.pack(pady=10)
     # Update Button
-    update_button = tk.Button(window,
-                           height=2,
-                           width=20,
-                           text="Update This Infomation", 
-                           command=update_record)
+    update_button = ctk.CTkButton(master=window,
+                                    fg_color="#f8f8f8",
+                                text="Update This Infomation",
+                                text_color="black",
+                                height=60, width=300,
+                                font=("Leelawadee", 20),
+                                command=lambda: update_record())
     update_button.pack(pady=10)
     # Delete Button
-    delete_data = tk.Button(window, 
-                         height=2,
-                         width=20,
-                         text="Delete This Infomation", 
-                         command=deleteItems)
-    delete_data.pack(pady=10)
+    delete_button = ctk.CTkButton(master=window,
+                                    fg_color="#f8f8f8",
+                                text="Delete Infomation",
+                                text_color="black",
+                                height=60, width=300,
+                                font=("Leelawadee", 20),
+                                command=lambda: deleteItems())
+    delete_button.pack(pady=10)
     
     table.bind('<Delete>', lambda e: deleteItems())
     table.bind("<ButtonRelease-1>", lambda e: select_record())
     
-    write_to_csv = tk.Button(window, foreground="green",background='black',
-                         height=2,
-                         width=35,
-                         font=("Leelawadee", 15, 'bold'),
-                         text="Write To CSV File and Back to Main Page", 
-                         command=write_to_csv)
-    write_to_csv.pack(pady=10)
+    back_button = ctk.CTkButton(master=window,
+                                    fg_color="#f8f8f8",
+                                text="Back without Saving",
+                                text_color="black",
+                                height=60, width=200,
+                                font=("Leelawadee", 30, "bold"),
+                                command=lambda: mp.MainPage(course_id))
+    back_button.pack(side="bottom", pady=30)
+    
+    save_button = ctk.CTkButton(master=window,
+                                    fg_color="#f8f8f8",
+                                text="Save and Back to Main Page",
+                                text_color="black",
+                                height=60, width=200,
+                                font=("Leelawadee", 30, "bold"),
+                                command=lambda: write_to_csv())
+    save_button.pack(pady=(50,0), side="bottom")
     
     window.mainloop()
