@@ -73,8 +73,6 @@ class MainPage():
         choose_active_label.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
         choose_active_label.grid(row=0, column=1, padx=20, pady=10)
         
- 
-
         #Buttons for each page
         #Buttons for add student data page
         student_data_frame = ctk.CTkFrame(master=window,)
