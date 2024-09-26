@@ -8,7 +8,7 @@ class CourseDataPage:
         mp.MainPage(window)
         
     def __init__(self, window):
-
+        # Create Master Frame
         master_frame = ctk.CTkFrame(master=window)
         master_frame.pack(fill="both", expand=True)
         

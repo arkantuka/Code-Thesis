@@ -1,7 +1,6 @@
 import customtkinter as ctk
 import pages.main_page as mp
 import pages.show_student_data_page as ssdp
-import pandas as pd
 import openpyxl
 from tkinter import filedialog
 from CTkMessagebox import CTkMessagebox
@@ -14,14 +13,21 @@ class StudentDataPage:
                                           title="Select A File",
                                           filetype=(("xlsx files", "*.xlsx"),("All Files", "*.*")))
         return file_path
-    
+                
     # Load Excel Data and save to new sheet
     def loadExcelData():
         file_path = StudentDataPage.fileDialog("/")
-        xl = pd.read_excel(file_path, sheet_name=None)
-        sheets = xl.keys()
+        workbook = openpyxl.load_workbook(file_path)
+        sheets = workbook.sheetnames
         for sheet in sheets:
-            xl[sheet].to_excel(f"version.0.5/students_data/{sheet}.xlsx")
+            new_workbook = openpyxl.Workbook()
+            new_workbook.create_sheet(sheet)
+            new_workbook.remove(new_workbook['Sheet'])
+            for row in workbook[sheet].iter_rows(values_only=True): 
+                new_workbook[sheet].append(row) 
+            new_workbook.save(f"version.0.5/students_data/{sheet}.xlsx")
+            new_workbook.close()
+            
         # Show Message
         CTkMessagebox(title="Information", 
                       message=f"File {file_path} loaded successfully.", 
