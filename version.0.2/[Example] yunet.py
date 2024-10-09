@@ -6,7 +6,7 @@ def main():
 
     directory = os.path.dirname(__file__)
     #capture = cv2.VideoCapture(os.path.join(directory, "image.jpg")) 
-    capture = cv2.VideoCapture(0) 
+    capture = cv2.VideoCapture(0+cv2.CAP_DSHOW) 
     if not capture.isOpened():
         exit()
     
@@ -35,7 +35,7 @@ def main():
         for face in faces:
 
             box = list(map(int, face[:4]))
-            color = (0, 0, 255)
+            color = (255, 0, 0)
             thickness = 2
             cv2.rectangle(image, box, color, thickness, cv2.LINE_AA)
             print(box)

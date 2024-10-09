@@ -2,6 +2,7 @@ import threading
 import customtkinter as ctk
 import openpyxl
 import cv2
+import os
 import pages.student_data_page as std_page
 from PIL import Image
 from tkinter import ttk
@@ -15,7 +16,6 @@ class CameraThread(threading.Thread):
         
     def run(self):
         ShowStudentDataPage.capture_video(self.camera_id, self.camera_frame)
-
 
 class ShowStudentDataPage:
     
@@ -206,6 +206,11 @@ class ShowStudentDataPage:
         
     # Create Camera Lebel and Show
     def capture_video(camid, cam_frame):
+        # Create Face Detection YUNet
+        directory = os.path.dirname(__file__)
+        weights = os.path.join(directory, "face_detection_yunet_2023mar.onnx")
+        face_cascade_yunet = cv2.FaceDetectorYN_create(weights, "", (0, 0))
+        # Create Camera Label and set Camera
         width = 480
         height = 480
         cam = cv2.VideoCapture(camid+cv2.CAP_DSHOW)
@@ -213,14 +218,36 @@ class ShowStudentDataPage:
         cam.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
         lmain = ctk.CTkLabel(cam_frame, text="")
         lmain.pack()
+        # Show Frame Function
         def show_frame():
             _, frame = cam.read()
             cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
+            gray_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            # Detect Faces
+            h, w, _ = frame.shape
+            faces = face_cascade_yunet.setInputSize((w, h))
+            _, faces = face_cascade_yunet.detect(frame)
+            faces = faces if faces is not None else []
+            # Draw Bounding Box
+            for face in faces:
+                # Face Line
+                box = list(map(int, face[:4]))
+                color = (255, 0, 0, 255)
+                thickness = 2
+                cv2.rectangle(cv2image, box, color, thickness, lineType=cv2.LINE_AA)
+                # Face Confidence
+                confidence = face[-1]
+                confidence = "{:.2f}".format(confidence)
+                position = (box[0], box[1] - 10)
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                scale = 0.5
+                thickness = 2
+                cv2.putText(cv2image, confidence, position, font, scale, color, thickness, lineType=cv2.LINE_AA)
+            # Show Image
             img = Image.fromarray(cv2image)
             imgctk = ctk.CTkImage(light_image=img, dark_image=img, size=img.size)
             lmain.configure(image=imgctk)
-            lmain.after(20, show_frame)
-            
+            lmain.after(100, show_frame)
         show_frame()
         
     def collect_face():
