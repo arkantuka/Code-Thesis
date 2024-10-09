@@ -36,11 +36,11 @@ class StudentDataPage:
     # Open Excel Data and open new Page
     def openExcelData(window, frame):
         file_path = StudentDataPage.fileDialog("version.0.5/students_data/")
-        workbook = openpyxl.load_workbook(file_path)
-        sheet = workbook.active
-        list_values = list(sheet.values)
+        # workbook = openpyxl.load_workbook(file_path)
+        # sheet = workbook.active
+        # list_values = list(sheet.values)
         frame.destroy()
-        ssdp.ShowStudentDataPage(window, list_values)
+        ssdp.ShowStudentDataPage(window, file_path)
         
     # Back Button Function
     def back(window, frame):
