@@ -5,7 +5,7 @@ import openpyxl
 from tkinter import filedialog
 from CTkMessagebox import CTkMessagebox
 
-class StudentDataPage:
+class TimeAttempPage:
     
     # File Dialog for file path
     def fileDialog(initial_directory):
@@ -16,7 +16,8 @@ class StudentDataPage:
                 
     # Load Excel Data and save to new sheet
     def loadExcelData():
-        file_path = StudentDataPage.fileDialog("/")
+        
+        file_path = TimeAttempPage.fileDialog("/")
         workbook = openpyxl.load_workbook(file_path)
         sheets = workbook.sheetnames
         for sheet in sheets:
@@ -35,12 +36,12 @@ class StudentDataPage:
     
     # Open Excel Data and open new Page
     def openExcelData(window, frame):
-        file_path = StudentDataPage.fileDialog("version.0.5/students_data/")
-        # workbook = openpyxl.load_workbook(file_path)
-        # sheet = workbook.active
-        # list_values = list(sheet.values)
+        file_path = TimeAttempPage.fileDialog("version.0.5/students_data/")
+        workbook = openpyxl.load_workbook(file_path)
+        sheet = workbook.active
+        list_values = list(sheet.values)
         frame.destroy()
-        ssdp.ShowStudentDataPage(window, file_path)
+        ssdp.ShowStudentDataPage(window, list_values)
         
     # Back Button Function
     def back(window, frame):
@@ -72,13 +73,13 @@ class StudentDataPage:
         buttons_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
         
         # Create Open Data Button
-        open_data_button = StudentDataPage.createButton(buttons_frame, 'Open Data',
-                                                        lambda: StudentDataPage.openExcelData(window, master_frame))
+        open_data_button = TimeAttempPage.createButton(buttons_frame, 'Open Data',
+                                                        lambda: TimeAttempPage.openExcelData(window, master_frame))
         open_data_button.grid(row=0, column=1, padx=20, pady=10)
         
         # Create Browse and Load File Button
-        browse_n_load_data_button = StudentDataPage.createButton(buttons_frame, 'Browse New File', 
-                                                        lambda: StudentDataPage.loadExcelData())
+        browse_n_load_data_button = TimeAttempPage.createButton(buttons_frame, 'Browse New File', 
+                                                        lambda: TimeAttempPage.loadExcelData())
         browse_n_load_data_button.grid(row=1, column=1, padx=20, pady=10)
         
         # Exit Button
@@ -94,5 +95,5 @@ class StudentDataPage:
                                     width=200, height=50,
                                     text="Back",
                                     font=("Leelawadee", 25),
-                                    command=lambda: StudentDataPage.back(window, master_frame))
+                                    command=lambda: TimeAttempPage.back(window, master_frame))
         back_button.pack(side="bottom", pady=30)

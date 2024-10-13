@@ -13,9 +13,10 @@ class FaceRecognitionApp:
         
         # Window
         window = ctk.CTk()
-        window.geometry("1000x1000")
+        window.geometry("1920x1080")
         window.after(0, lambda: window.wm_state('zoomed'))
         window.title("Face Recognition App")
+        window.resizable(True, False)
         
         mp.MainPage(window)
         

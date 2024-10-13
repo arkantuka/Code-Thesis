@@ -3,9 +3,9 @@ import customtkinter as ctk
 import openpyxl
 import cv2
 import os
-import pages.student_data_page as std_page
+import pages.menu_student_data_page as menu_std
 from PIL import Image
-from tkinter import ttk
+from tkinter import messagebox, ttk
 
 # Create Camera Thread
 class CameraThread(threading.Thread):
@@ -15,15 +15,23 @@ class CameraThread(threading.Thread):
         self.camera_frame = camera_frame
         
     def run(self):
-        ShowStudentDataPage.capture_video(self.camera_id, self.camera_frame)
+        ManageStudentPage.capture_video(self.camera_id, self.camera_frame)
 
-class ShowStudentDataPage:
+class ManageStudentPage:
+    
+    student_id = ''
+    student_name = ''
+    faces_path = ''
+    capture_status = False
+    cam1_count = 0
+    cam2_count = 0
+    table = None
     
     # Back Button Function
     def back(window, frame):
         
         frame.destroy()
-        std_page.StudentDataPage(window)
+        menu_std.StudentMenu(window)
     
     # Back and save Button Function
     def backAndSave(window, frame, workbook, table, file_path):
@@ -39,7 +47,7 @@ class ShowStudentDataPage:
         workbook.save(file_path)
         workbook.close()
         frame.destroy()
-        std_page.StudentDataPage(window)
+        menu_std.StudentMenu(window)
         
     # Create Button
     def createButton(frame, text, command):
@@ -69,6 +77,8 @@ class ShowStudentDataPage:
         # Output to boxs
         id_entry.insert(0, values[0])
         name_entry.insert(0, values[1])
+        # Set ID and Name
+        ManageStudentPage.set_id_name(id_entry, name_entry)
     
     # Insert Data Function
     def insert_record(table, id_entry, name_entry):
@@ -81,6 +91,17 @@ class ShowStudentDataPage:
         else:
             pass           
     
+    def set_table(table):
+        ManageStudentPage.table = table
+    
+    # Update Face Status Function
+    def update_face_status(table, id, name):
+        # Grab record number
+        selected = table.focus()
+        face_status = "Collected"
+        # Save new data
+        table.item(selected, text="", values=(id, name, face_status))
+        
     # Update Record Function
     def update_record(table, id_entry, name_entry):
         if id_entry.get() and name_entry.get() != '':
@@ -100,6 +121,14 @@ class ShowStudentDataPage:
         else:
             pass
         
+    # Set ID and Name
+    def set_id_name(id_entry, name_entry):
+        if id_entry.get() and name_entry.get() != '':
+            ManageStudentPage.student_id = id_entry.get()
+            ManageStudentPage.student_name = name_entry.get()
+        else:
+            pass
+    
     # Create Frame 1 Function
     def createFrame1(window, master_frame, file_path):
         # Load Excel File    
@@ -158,42 +187,44 @@ class ShowStudentDataPage:
         style.configure("Entry", font=('Leelawadee', 20, 'bold'))
         id_label = ctk.CTkLabel(entry_frame, text='Student ID')
         id_label.grid(row=0, column=0)
-        id_entry = ShowStudentDataPage.createEntry(entry_frame, 150, 'Student ID')
+        id_entry = ManageStudentPage.createEntry(entry_frame, 150, 'Student ID')
         id_entry.grid(row=1, column=0)
         name_label = ctk.CTkLabel(entry_frame, text='Full Name')
         name_label.grid(row=0, column=1)
-        name_entry = ShowStudentDataPage.createEntry(entry_frame, 350, 'Full Name')
+        name_entry = ManageStudentPage.createEntry(entry_frame, 350, 'Full Name')
         name_entry.grid(row=1, column=1)
+        
+        ManageStudentPage.set_table(table)
         
         # Create Button Frame
         button_frame = ctk.CTkFrame(master=sub_master_frame_1)
         button_frame.pack(pady=(10,0))
         
         # Create Insert Data Button
-        insert_data_button = ShowStudentDataPage.createButton(button_frame, 'Insert Data',
-                                                              lambda: ShowStudentDataPage.insert_record(table, id_entry, name_entry))
+        insert_data_button = ManageStudentPage.createButton(button_frame, 'Insert Data',
+                                                              lambda: ManageStudentPage.insert_record(table, id_entry, name_entry))
         insert_data_button.grid(row=0, column=0, padx=20, pady=10)
         
         # Create Update Data Button
-        update_data_button = ShowStudentDataPage.createButton(button_frame, 'Update Data',
-                                                              lambda: ShowStudentDataPage.update_record(table, id_entry, name_entry))
+        update_data_button = ManageStudentPage.createButton(button_frame, 'Update Data',
+                                                              lambda: ManageStudentPage.update_record(table, id_entry, name_entry))
         update_data_button.grid(row=1, column=0, padx=20, pady=10)
         
         # Create Delete Data Button
-        delete_data_button = ShowStudentDataPage.createButton(button_frame, 'Delete Data',
-                                                              lambda: ShowStudentDataPage.delete_record(table))
+        delete_data_button = ManageStudentPage.createButton(button_frame, 'Delete Data',
+                                                              lambda: ManageStudentPage.delete_record(table))
         delete_data_button.grid(row=2, column=0, padx=20, pady=10)
         
         # bind
-        table.bind('<Delete>', lambda e: ShowStudentDataPage.delete_record(table))
-        table.bind('<ButtonRelease-1>', lambda e: ShowStudentDataPage.select_record(table, id_entry, name_entry))
+        table.bind('<Delete>', lambda e: ManageStudentPage.delete_record(table))
+        table.bind('<ButtonRelease-1>', lambda e: ManageStudentPage.select_record(table, id_entry, name_entry))
         
         # Back and save Button
         back_n_save_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='green',
                                     width=200, height=50,
                                     text="Back and Save",
                                     font=("Leelawadee", 25),
-                                    command=lambda: ShowStudentDataPage.backAndSave(window, master_frame, workbook, table, file_path))
+                                    command=lambda: ManageStudentPage.backAndSave(window, master_frame, workbook, table, file_path))
         back_n_save_button.pack(side="bottom", pady=(30,30))
         
         # Back without save Button
@@ -201,11 +232,12 @@ class ShowStudentDataPage:
                                     width=200, height=50,
                                     text="Back without Save",
                                     font=("Leelawadee", 25),
-                                    command=lambda: ShowStudentDataPage.back(window, master_frame))
+                                    command=lambda: ManageStudentPage.back(window, master_frame))
         back_button.pack(side="bottom", pady=(30,0))
         
     # Create Camera Lebel and Show
     def capture_video(camid, cam_frame):
+        # face_count_cam1, face_count_cam2 = 0, 0
         # Create Face Detection YUNet
         directory = os.path.dirname(__file__)
         weights = os.path.join(directory, "face_detection_yunet_2023mar.onnx")
@@ -220,6 +252,7 @@ class ShowStudentDataPage:
         lmain.pack()
         # Show Frame Function
         def show_frame():
+            # nonlocal face_count_cam1, face_count_cam2
             _, frame = cam.read()
             cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
             gray_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -243,6 +276,22 @@ class ShowStudentDataPage:
                 scale = 0.5
                 thickness = 2
                 cv2.putText(cv2image, confidence, position, font, scale, color, thickness, lineType=cv2.LINE_AA)
+                # Capture Faces
+                if ManageStudentPage.cam1_count == 50 and ManageStudentPage.cam2_count == 50:
+                    ManageStudentPage.cam1_count, ManageStudentPage.cam2_count = 0, 0
+                    ManageStudentPage.capture_status = False
+                    ManageStudentPage.update_face_status(ManageStudentPage.table, ManageStudentPage.student_id, ManageStudentPage.student_name)
+                    messagebox.showinfo(title="Success", message="Face Capture has been completed.")
+                elif ManageStudentPage.capture_status:
+                    if ManageStudentPage.cam1_count < 50 and camid == 0:
+                        ManageStudentPage.cam1_count += 1
+                        cv2.imwrite(ManageStudentPage.faces_path+"/"+str(ManageStudentPage.student_id)+"-"+str(camid)+"-"+str(ManageStudentPage.cam1_count)+".jpg", 
+                                    gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
+                    if ManageStudentPage.cam2_count < 50 and camid == 1:
+                        ManageStudentPage.cam2_count += 1
+                        cv2.imwrite(ManageStudentPage.faces_path+"/"+str(ManageStudentPage.student_id)+"-"+str(camid)+"-"+str(ManageStudentPage.cam2_count)+".jpg",
+                                    gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
+
             # Show Image
             img = Image.fromarray(cv2image)
             imgctk = ctk.CTkImage(light_image=img, dark_image=img, size=img.size)
@@ -250,11 +299,20 @@ class ShowStudentDataPage:
             lmain.after(100, show_frame)
         show_frame()
         
-    def collect_face():
-        print("Collecting Face")
-    
+    # Create Collect Face Function
+    def collect_face(year_folder):
+        parent_dir = "version.0.5/images"
+        year_folder = os.path.join(parent_dir, year_folder)
+        if ManageStudentPage.student_id != '':
+            faces_folder = os.path.join(year_folder, ManageStudentPage.student_id)
+            if not os.path.exists(faces_folder):os.mkdir(faces_folder)
+            ManageStudentPage.faces_path = faces_folder
+            ManageStudentPage.capture_status = True
+            ManageStudentPage.capture_cam1_status = True
+            ManageStudentPage.capture_cam2_status = True
+                
     # Create Frame 2 Function
-    def createFrame2(window, master_frame):
+    def createFrame2(window, master_frame, year):
         # Create Sub Master Frame 2
         sub_master_frame_2 = ctk.CTkFrame(master=master_frame)
         sub_master_frame_2.grid(row=0, column=1, padx=5, pady=5)
@@ -282,8 +340,8 @@ class ShowStudentDataPage:
         collect_button_frame.grid(row=1, column=0, padx=5, pady=5)
         
         # Create Facecollection Button
-        collect_button = ShowStudentDataPage.createButton(collect_button_frame, 'Capture Face',
-                                                              lambda: ShowStudentDataPage.collect_face())
+        collect_button = ManageStudentPage.createButton(collect_button_frame, 'Capture Face',
+                                                              lambda: ManageStudentPage.collect_face(year))
         collect_button.grid(row=0, column=0, padx=10, pady=10)
     
     def __init__(self, window, file_path):
@@ -295,5 +353,8 @@ class ShowStudentDataPage:
         master_frame.grid_columnconfigure(0, weight=1)
         master_frame.grid_columnconfigure(1, weight=1)
         
-        ShowStudentDataPage.createFrame1(window, master_frame, file_path)
-        ShowStudentDataPage.createFrame2(window, master_frame)
+        year_path = os.path.basename(file_path)
+        year_path = os.path.splitext(year_path)[0]
+        
+        ManageStudentPage.createFrame1(window, master_frame, file_path)
+        ManageStudentPage.createFrame2(window, master_frame, year_path)

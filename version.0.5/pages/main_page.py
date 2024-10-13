@@ -1,6 +1,6 @@
 import customtkinter as ctk
-import pages.student_data_page as std_page
-import pages.course_data_page as crs_page
+import pages.menu_student_data_page as menu_std
+import pages.menu_course_data_page as menu_crs
 from PIL import Image
 
 class MainPage:
@@ -34,9 +34,9 @@ class MainPage:
     def button_click(window, frame, order):
         frame.destroy()
         if order == 1:
-            std_page.StudentDataPage(window)
+            menu_std.StudentMenu(window)
         elif order == 2:
-            crs_page.CourseDataPage(window)
+            menu_crs.CourseMenu(window)
         else:
             print("Error")
             
