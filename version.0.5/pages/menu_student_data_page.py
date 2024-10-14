@@ -52,7 +52,7 @@ class StudentMenu:
             file_path = StudentMenu.fileDialog("version.0.5/students_data/")
             if file_path:
                 frame.destroy()
-                mng_std.ShowStudentDataPage(window, file_path)
+                mng_std.ManageStudentPage(window, file_path)
         except:
             pass
         

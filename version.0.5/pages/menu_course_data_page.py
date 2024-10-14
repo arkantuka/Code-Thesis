@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import pages.main_page as mp
-# import pages.course_data_page as crs_page
-# import pages.time_attendence_page as att_page
+import pages.menu_manage_coures as menu_mng_crs
+import pages.time_attendence_page as att_page
 from PIL import Image
 
 class CourseMenu:
@@ -38,18 +38,15 @@ class CourseMenu:
     #Click Button function
     def button_click(window, frame, order):
         frame.destroy()
-        # if order == 1:
-        #     crs_page.CourseDataPage(window)
+        if order == 1:
+            menu_mng_crs.ManageCourseMenu(window)
         # # elif order == 2:
         # #     face_rec_page.FaceRecognitionPage(window)
-        # elif order == 3:
-        #     att_page.AttendencePage(window)
-        # else:
-        #     print("Error")
+        elif order == 3:
+            att_page.TimeAttendence(window)
+        else:
+            print("Error")
         
-    
-
-
     def __init__(self, window):
         # Create Master Frame
         master_frame = ctk.CTkFrame(master=window)
@@ -62,40 +59,39 @@ class CourseMenu:
                                   padx=100, pady=10)
         menu_label.pack(pady=(50, 0))
         
-        # Main Frame
-        menu_frame = ctk.CTkFrame(master=master_frame)
-        menu_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
+        # Main Menu Frame
+        main_menu_frame = ctk.CTkFrame(master=master_frame)
+        main_menu_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
 
-
-        # Course Data Button
-        course_data_frame = CourseMenu.createFrame(menu_frame, 0, 0)
-        CourseMenu.createIcon(course_data_frame, 
+        # Course Detail Button
+        manage_course_menu_button_frame = CourseMenu.createFrame(main_menu_frame, 0, 0)
+        CourseMenu.createIcon(manage_course_menu_button_frame, 
                                       'version.0.5/icons/course-data-icon.png',
                                       lambda: CourseMenu.button_click(window, master_frame, 1))
-        student_data_button = CourseMenu.createButton(course_data_frame, 
-                                        "Course Data", 
+        manage_course_menu_button = CourseMenu.createButton(manage_course_menu_button_frame, 
+                                        "Manage Course Data", 
                                         lambda: CourseMenu.button_click(window, master_frame, 1))
-        student_data_button.grid(row=1, column=0, padx=20, pady=10)
+        manage_course_menu_button.grid(row=1, column=0, padx=20, pady=10)
 
         # Face Recognition Button
-        face_Recognition_frame = CourseMenu.createFrame(menu_frame, 0, 1)
-        CourseMenu.createIcon(face_Recognition_frame, 
+        face_rec_button_frame = CourseMenu.createFrame(main_menu_frame, 0, 1)
+        CourseMenu.createIcon(face_rec_button_frame, 
                                       'version.0.5/icons/facerec.jpg',
-                                      lambda: CourseMenu.button_click(window, master_frame, 1))
-        face_Recognition_frame = CourseMenu.createButton(face_Recognition_frame, 
+                                      lambda: CourseMenu.button_click(window, master_frame, 2))
+        face_rec_button = CourseMenu.createButton(face_rec_button_frame, 
                                         "Face Recognition", 
-                                        lambda: CourseMenu.button_click(window, master_frame, 1))
-        face_Recognition_frame.grid(row=1, column=0, padx=20, pady=10)
+                                        lambda: CourseMenu.button_click(window, master_frame, 2))
+        face_rec_button.grid(row=1, column=0, padx=20, pady=10)
 
         # Time Attempt Button
-        time_attempt_frame = CourseMenu.createFrame(menu_frame, 0, 2)
-        CourseMenu.createIcon(time_attempt_frame, 
+        time_atten_button_frame = CourseMenu.createFrame(main_menu_frame, 0, 2)
+        CourseMenu.createIcon(time_atten_button_frame, 
                                       'version.0.5/icons/time2.png',
-                                      lambda: CourseMenu.button_click(window, master_frame, 1))
-        time_attempt_frame = CourseMenu.createButton(time_attempt_frame, 
-                                        "Time Attempt", 
-                                        lambda: CourseMenu.button_click(window, master_frame, 1))
-        time_attempt_frame.grid(row=1, column=0, padx=20, pady=10)
+                                      lambda: CourseMenu.button_click(window, master_frame, 3))
+        time_atten_button = CourseMenu.createButton(time_atten_button_frame, 
+                                        "Time Attendence", 
+                                        lambda: CourseMenu.button_click(window, master_frame, 3))
+        time_atten_button.grid(row=1, column=0, padx=20, pady=10)
 
 
         # Exit Button

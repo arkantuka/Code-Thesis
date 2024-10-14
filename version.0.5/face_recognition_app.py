@@ -16,10 +16,8 @@ class FaceRecognitionApp:
         window.geometry("1920x1080")
         window.after(0, lambda: window.wm_state('zoomed'))
         window.title("Face Recognition App")
-        window.resizable(True, False)
         
         mp.MainPage(window)
-        
         window.mainloop()
     
 if __name__ == "__main__":

@@ -1,13 +1,12 @@
 import customtkinter as ctk
-import pages.menu_course_data_page as menu_csr
-# import pages.time_attendence_page as att_page
+import pages.menu_course_data_page as menu_crs
 from PIL import Image
 
-class CourseDataPage:
+class CourseDetail:
     # Back Button Function
     def back(window, frame):
         frame.destroy()
-        menu_csr.CourseDataMenuPage(window)
+        menu_crs.CourseMenu(window)
         
     # Create Frame
     def createFrame(window, row, col):
@@ -22,7 +21,7 @@ class CourseDataPage:
                            font=("Leelawadee", 25),
                            command=command)
         return button
-    
+
     #Create Icon
     def createIcon(window, image_path, command):
         image_icon = ctk.CTkImage(light_image=Image.open(image_path),
@@ -59,5 +58,5 @@ class CourseDataPage:
                                     width=200, height=50,
                                     text="Back",
                                     font=("Leelawadee", 25),
-                                    command=lambda: CourseDataPage.back(window, master_frame))
+                                    command=lambda: CourseDetail.back(window, master_frame))
         back_button.pack(side="bottom", pady=30)

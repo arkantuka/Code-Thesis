@@ -237,7 +237,7 @@ class ManageStudentPage:
         
     # Create Camera Lebel and Show
     def capture_video(camid, cam_frame):
-        # face_count_cam1, face_count_cam2 = 0, 0
+        
         # Create Face Detection YUNet
         directory = os.path.dirname(__file__)
         weights = os.path.join(directory, "face_detection_yunet_2023mar.onnx")
@@ -252,7 +252,6 @@ class ManageStudentPage:
         lmain.pack()
         # Show Frame Function
         def show_frame():
-            # nonlocal face_count_cam1, face_count_cam2
             _, frame = cam.read()
             cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
             gray_img = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
@@ -265,12 +264,16 @@ class ManageStudentPage:
             for face in faces:
                 # Face Line
                 box = list(map(int, face[:4]))
-                color = (255, 0, 0, 255)
+                if ManageStudentPage.capture_status is False:
+                    color = (255, 0, 0, 255)
+                    confidence = face[-1]
+                    confidence = "{:.2f}".format(confidence)
+                else:
+                    color = (255, 215, 0, 255)
+                    confidence = "Processing..."
                 thickness = 2
                 cv2.rectangle(cv2image, box, color, thickness, lineType=cv2.LINE_AA)
                 # Face Confidence
-                confidence = face[-1]
-                confidence = "{:.2f}".format(confidence)
                 position = (box[0], box[1] - 10)
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 scale = 0.5
@@ -291,7 +294,6 @@ class ManageStudentPage:
                         ManageStudentPage.cam2_count += 1
                         cv2.imwrite(ManageStudentPage.faces_path+"/"+str(ManageStudentPage.student_id)+"-"+str(camid)+"-"+str(ManageStudentPage.cam2_count)+".jpg",
                                     gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
-
             # Show Image
             img = Image.fromarray(cv2image)
             imgctk = ctk.CTkImage(light_image=img, dark_image=img, size=img.size)
@@ -310,7 +312,7 @@ class ManageStudentPage:
             ManageStudentPage.capture_status = True
             ManageStudentPage.capture_cam1_status = True
             ManageStudentPage.capture_cam2_status = True
-                
+        
     # Create Frame 2 Function
     def createFrame2(window, master_frame, year):
         # Create Sub Master Frame 2
