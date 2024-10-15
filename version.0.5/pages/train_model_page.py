@@ -23,8 +23,7 @@ class TrainModel:
             faces.append(face_np)
             ids.append(id)
             cv2.imshow("training", face_np)
-            cv2.waitKey(1)
-        
+            cv2.waitKey(1)        
         cv2.destroyAllWindows()
         print(len(ids))
         return ids, faces

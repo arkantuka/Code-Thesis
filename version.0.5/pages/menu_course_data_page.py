@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import pages.main_page as mp
 import pages.menu_manage_course as menu_mng_crs
-import pages.time_attendence_page as att_page
+import pages.choose_course_attendance as choose_crs_att
 import pages.choose_course_face_recognition as choose_crs_rec
 from PIL import Image
 
@@ -44,7 +44,7 @@ class CourseMenu:
         elif order == 2:
             choose_crs_rec.ChooseCourseFaceRecognition(window)
         elif order == 3:
-            att_page.TimeAttendence(window)
+            choose_crs_att.ChooseCourseTimeAttendance(window)
         else:
             print("Error")
         
@@ -90,7 +90,7 @@ class CourseMenu:
                                       'version.0.5/icons/time2.png',
                                       lambda: CourseMenu.button_click(window, master_frame, 3))
         time_atten_button = CourseMenu.createButton(time_atten_button_frame, 
-                                        "Time Attendence", 
+                                        "Time Attendance", 
                                         lambda: CourseMenu.button_click(window, master_frame, 3))
         time_atten_button.grid(row=1, column=0, padx=20, pady=10)
 

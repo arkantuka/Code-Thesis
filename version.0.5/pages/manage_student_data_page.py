@@ -16,7 +16,7 @@ class CameraThread(threading.Thread):
         
     def run(self):
         ManageStudentPage.capture_video(self.camera_id, self.camera_frame)
-        
+
 
 class ManageStudentPage:
     
@@ -30,7 +30,10 @@ class ManageStudentPage:
     
     # Back Button Function
     def back(window, frame):
-        
+        cam1 = cv2.VideoCapture(0+cv2.CAP_DSHOW)
+        cam2 = cv2.VideoCapture(1+cv2.CAP_DSHOW)
+        cam1.release()
+        cam2.release()
         frame.destroy()
         menu_std.StudentMenu(window)
     
@@ -46,6 +49,11 @@ class ManageStudentPage:
             sheet.append(row)            
         workbook.save(file_path)
         workbook.close()
+        cam1 = cv2.VideoCapture(0+cv2.CAP_DSHOW)
+        cam2 = cv2.VideoCapture(1+cv2.CAP_DSHOW)
+        cam1.release()
+        cam2.release()
+        cv2.destroyAllWindows()
         frame.destroy()
         menu_std.StudentMenu(window)
         
@@ -95,7 +103,7 @@ class ManageStudentPage:
         ManageStudentPage.table = table
     
     # Update Face Status Function
-    def update_face_status(table, id, name):
+    def update_face_status_facedetect(table, id, name):
         # Grab record number
         selected = table.focus()
         face_status = "Collected"
@@ -133,15 +141,15 @@ class ManageStudentPage:
         idx = []
         for id in ids_database:
             if id in ids_opened:
-                idx.append(ids_opened.index(id)+1)
+                idx.append(ids_opened.index(id)+3)
         return idx
-        
-    def update_face_status(ids, year):
-        collected_ids = []
-        collected_ids_path = os.listdir(f'version.0.5/images/{year}')
-        for id_path in collected_ids_path:
-            collected_ids.append(id_path)
-        return ManageStudentPage.find_ids_index_duplicate(collected_ids, ids)
+    
+    def update_face_status(ids, year_path):
+        collection_ids = []
+        faceID_path = os.listdir(f"version.0.5/images/{year_path}")
+        for id in faceID_path:
+            collection_ids.append(id)
+        return ManageStudentPage.find_ids_index_duplicate(collection_ids, ids)
             
     # Create Frame 1 Function
     def createFrame1(window, master_frame, file_path):
@@ -151,12 +159,14 @@ class ManageStudentPage:
         loadToList = list(sheet.values)
         list_of_data = []
         for row in loadToList:
+            if row[0][:] == 'None':
+                continue
             list_of_data.append(list(row))
+        all_ids = [i[0] for i in list_of_data[3:]]
         year_path = os.path.basename(file_path)
         year_path = os.path.splitext(year_path)[0]
-        duplicate_ids = ManageStudentPage.update_face_status(list_of_data[1:], year_path)
+        duplicate_ids = ManageStudentPage.update_face_status(all_ids, year_path)
         for idx in duplicate_ids:
-            print(list_of_data[idx])
             list_of_data[idx][2] = "Collected"        
 
         # Create Sub master Frame 1
@@ -306,7 +316,7 @@ class ManageStudentPage:
                 if ManageStudentPage.cam1_count == 50 and ManageStudentPage.cam2_count == 50:
                     ManageStudentPage.cam1_count, ManageStudentPage.cam2_count = 0, 0
                     ManageStudentPage.capture_status = False
-                    ManageStudentPage.update_face_status(ManageStudentPage.table, ManageStudentPage.student_id, ManageStudentPage.student_name)
+                    ManageStudentPage.update_face_status_facedetect(ManageStudentPage.table, ManageStudentPage.student_id, ManageStudentPage.student_name)
                     messagebox.showinfo(title="Success", message="Face Capture has been completed.")
                 elif ManageStudentPage.capture_status:
                     if ManageStudentPage.cam1_count < 50 and camid == 0:
