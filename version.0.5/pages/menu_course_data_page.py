@@ -1,7 +1,8 @@
 import customtkinter as ctk
 import pages.main_page as mp
-import pages.menu_manage_coures as menu_mng_crs
+import pages.menu_manage_course as menu_mng_crs
 import pages.time_attendence_page as att_page
+import pages.choose_course_face_recognition as choose_crs_rec
 from PIL import Image
 
 class CourseMenu:
@@ -40,8 +41,8 @@ class CourseMenu:
         frame.destroy()
         if order == 1:
             menu_mng_crs.ManageCourseMenu(window)
-        # # elif order == 2:
-        # #     face_rec_page.FaceRecognitionPage(window)
+        elif order == 2:
+            choose_crs_rec.ChooseCourseFaceRecognition(window)
         elif order == 3:
             att_page.TimeAttendence(window)
         else:

@@ -16,6 +16,7 @@ class CameraThread(threading.Thread):
         
     def run(self):
         ManageStudentPage.capture_video(self.camera_id, self.camera_frame)
+        
 
 class ManageStudentPage:
     
@@ -42,7 +43,6 @@ class ManageStudentPage:
         sheet.append(header)
         for row_id in table.get_children():
             row = table.item(row_id)['values']
-            # print(row)
             sheet.append(row)            
         workbook.save(file_path)
         workbook.close()
@@ -129,12 +129,35 @@ class ManageStudentPage:
         else:
             pass
     
+    def find_ids_index_duplicate(ids_database, ids_opened):
+        idx = []
+        for id in ids_database:
+            if id in ids_opened:
+                idx.append(ids_opened.index(id)+1)
+        return idx
+        
+    def update_face_status(ids, year):
+        collected_ids = []
+        collected_ids_path = os.listdir(f'version.0.5/images/{year}')
+        for id_path in collected_ids_path:
+            collected_ids.append(id_path)
+        return ManageStudentPage.find_ids_index_duplicate(collected_ids, ids)
+            
     # Create Frame 1 Function
     def createFrame1(window, master_frame, file_path):
         # Load Excel File    
         workbook = openpyxl.load_workbook(file_path)
         sheet = workbook.active
-        list_of_data = list(sheet.values)
+        loadToList = list(sheet.values)
+        list_of_data = []
+        for row in loadToList:
+            list_of_data.append(list(row))
+        year_path = os.path.basename(file_path)
+        year_path = os.path.splitext(year_path)[0]
+        duplicate_ids = ManageStudentPage.update_face_status(list_of_data[1:], year_path)
+        for idx in duplicate_ids:
+            print(list_of_data[idx])
+            list_of_data[idx][2] = "Collected"        
 
         # Create Sub master Frame 1
         sub_master_frame_1 = ctk.CTkFrame(master=master_frame)
@@ -221,7 +244,7 @@ class ManageStudentPage:
         
         # Back and save Button
         back_n_save_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='green',
-                                    width=200, height=50,
+                                    width=220, height=50,
                                     text="Back and Save",
                                     font=("Leelawadee", 25),
                                     command=lambda: ManageStudentPage.backAndSave(window, master_frame, workbook, table, file_path))
@@ -229,7 +252,7 @@ class ManageStudentPage:
         
         # Back without save Button
         back_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='red',
-                                    width=200, height=50,
+                                    width=220, height=50,
                                     text="Back without Save",
                                     font=("Leelawadee", 25),
                                     command=lambda: ManageStudentPage.back(window, master_frame))
