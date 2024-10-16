@@ -2,7 +2,6 @@ import os
 import customtkinter as ctk
 import cv2
 import datetime
-
 import openpyxl
 import pages.choose_course_face_recognition as choose_f_rec
 from PIL import Image
@@ -36,7 +35,7 @@ class FaceRecognition:
     def create_camera_frame(frame, course_name, studentIDs, studentNames):
         # Create Camera Frame
         cam_frame = ctk.CTkFrame(master=frame)
-        cam_frame.pack(pady=(50, 10))
+        cam_frame.pack(pady=(5, 10))
         
         already_detected = []
         
@@ -44,8 +43,8 @@ class FaceRecognition:
         weights = os.path.join(directory, "face_detection_yunet_2023mar.onnx")
         face_cascade_yunet = cv2.FaceDetectorYN_create(weights, "", (0, 0))
         
-        width = 1080
-        height = 800
+        width = 1280
+        height = 890 
         cam = cv2.VideoCapture(0+cv2.CAP_DSHOW)
         cam.set(cv2.CAP_PROP_FRAME_WIDTH, width)
         cam.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
@@ -101,7 +100,7 @@ class FaceRecognition:
         show_frame()
         
         
-    def __init__(self, window, file_path, studentIDs, studentNames):
+    def __init__(self, window, file_path, studentIDs, studentNames, exam_time):
         # Create Master Frame
         master_frame = ctk.CTkFrame(master=window)
         master_frame.pack(fill="both", expand=True)
@@ -118,4 +117,4 @@ class FaceRecognition:
                                     text="Back",
                                     font=("Leelawadee", 25),
                                     command=lambda: FaceRecognition.back(window, master_frame))
-        back_button.pack(side="bottom", pady=20)
+        back_button.pack(side="bottom", pady=5)
