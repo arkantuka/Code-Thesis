@@ -1,10 +1,7 @@
 import customtkinter as ctk
-import pages.menu_student_data_page as menu_std
-import pages.menu_course_data_page as menu_crs
+import pages.manage_student_data_menu_page as mng_std_menu
 from PIL import Image
 
-ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew.ttf")
-ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew Bold.ttf")
 font = "THSarabunNew"
 button_font_size = 30
 header_font_size = 50
@@ -40,9 +37,14 @@ class MainPage:
     def button_click(window, frame, order):
         frame.destroy()
         if order == 1:
-            menu_std.StudentMenu(window)
+            mng_std_menu.StudentMenu(window)
         elif order == 2:
-            menu_crs.CourseMenu(window)
+            # menu_crs.MainPage(window)
+            print("2")
+        elif order == 3:
+            print("3")
+        elif order == 4:
+            print("4")
         else:
             print("Error")
             
@@ -72,24 +74,42 @@ class MainPage:
         # Student Data Button
         student_data_frame = MainPage.createFrame(menu_frame, 0, 0)
         MainPage.createIcon(student_data_frame, 
-                                      'version.0.5/icons/student-data-icon.jpg',
+                                      'version.final/icons/student-data-icon.jpg',
                                       lambda: MainPage.button_click(window, master_frame, 1))
         student_data_button = MainPage.createButton(student_data_frame, 
                                         "Manage Student Data", 
                                         lambda: MainPage.button_click(window, master_frame, 1))
         student_data_button.grid(row=1, column=0, padx=20, pady=10)
         
-        # Course Data Button
-        course_data_frame = MainPage.createFrame(menu_frame, 0, 1)
-        MainPage.createIcon(course_data_frame, 
-                                      'version.0.5/icons/course-data-icon.png',
+        # Course Detail Button
+        manage_course_menu_button_frame = MainPage.createFrame(menu_frame, 0, 1)
+        MainPage.createIcon(manage_course_menu_button_frame, 
+                                      'version.final/icons/course-data-icon.png',
                                       lambda: MainPage.button_click(window, master_frame, 2))
-        course_data_button = MainPage.createButton(course_data_frame, 
+        manage_course_menu_button = MainPage.createButton(manage_course_menu_button_frame, 
                                         "Manage Course Data", 
                                         lambda: MainPage.button_click(window, master_frame, 2))
-        course_data_button.grid(row=1, column=0, padx=20, pady=10)
-        
-        
+        manage_course_menu_button.grid(row=1, column=0, padx=20, pady=10)
+
+        # Face Recognition Button
+        face_rec_button_frame = MainPage.createFrame(menu_frame, 0, 2)
+        MainPage.createIcon(face_rec_button_frame, 
+                                      'version.final/icons/facerec.jpg',
+                                      lambda: MainPage.button_click(window, master_frame, 3))
+        face_rec_button = MainPage.createButton(face_rec_button_frame, 
+                                        "Face Recognition", 
+                                        lambda: MainPage.button_click(window, master_frame, 3))
+        face_rec_button.grid(row=1, column=0, padx=20, pady=10)
+
+        # Time Attempt Button
+        time_atten_button_frame = MainPage.createFrame(menu_frame, 0, 3)
+        MainPage.createIcon(time_atten_button_frame, 
+                                      'version.final/icons/time2.png',
+                                      lambda: MainPage.button_click(window, master_frame, 4))
+        time_atten_button = MainPage.createButton(time_atten_button_frame, 
+                                        "Time Attendance", 
+                                        lambda: MainPage.button_click(window, master_frame, 4))
+        time_atten_button.grid(row=1, column=0, padx=20, pady=10)
         
         # Mode Switch Button
         switch_var = ctk.BooleanVar(value=True)

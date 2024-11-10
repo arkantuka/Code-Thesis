@@ -3,20 +3,18 @@ import openpyxl
 import pages.choose_course_attendance as choose_crs_att
 from tkinter import ttk
 
+ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew.ttf")
+ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew Bold.ttf")
+normal_font = "THSarabunNew"
+bold_font = "THSarabunNew Bold"
+
 class TimeAttendance:
+    
     # Back Button Function
     def back(window, frame):
         frame.destroy()
         choose_crs_att.ChooseCourseTimeAttendance(window)
-        
-    # Create Button
-    def createButton(frame, label_name, command):
-        button = ctk.CTkButton(master=frame, fg_color="gray",
-                           text=label_name, height=50, width=200,
-                           font=("Leelawadee", 25),
-                           command=command)
-        return button
-    
+
     # Create Main Frame
     def createMainFrame(master_frame, file_path):
         
@@ -42,8 +40,8 @@ class TimeAttendance:
         
         # Configure Table
         style = ttk.Style()
-        style.configure("Treeview.Heading", font=("Leelawadee", 12, "bold"))
-        style.configure("Treeview", font=("Leelawadee", 15), rowheight=20)
+        style.configure("Treeview.Heading", font=(bold_font, 12))
+        style.configure("Treeview", font=(normal_font, 15), rowheight=20)
 
         # Insert Table
         table['columns'] = list_of_data[0]
@@ -59,6 +57,7 @@ class TimeAttendance:
     
         
     def __init__(self, window, file_path):
+        
         # Create Master Frame
         master_frame = ctk.CTkFrame(master=window)
         master_frame.pack(fill="both", expand=True)
@@ -66,7 +65,7 @@ class TimeAttendance:
         # Create Menu Label
         time_attendance_label = ctk.CTkLabel(master=master_frame,
                                   text="Time Attendance",
-                                  font=("Leelawadee", 35, "bold"),
+                                  font=(bold_font, 35),
                                   padx=20, pady=10)
         time_attendance_label.pack(pady=(20, 0))
         
@@ -76,7 +75,7 @@ class TimeAttendance:
         exit_button = ctk.CTkButton(master=master_frame, fg_color='red',
                                     width=200, height=50,
                                     text="Exit",
-                                    font=("Leelawadee", 25),
+                                    font=(bold_font, 25),
                                     command=window.destroy)
         exit_button.pack(side="bottom", pady=30)
         
@@ -84,6 +83,6 @@ class TimeAttendance:
         back_button = ctk.CTkButton(master=master_frame, fg_color='green',
                                     width=200, height=50,
                                     text="Back",
-                                    font=("Leelawadee", 25),
+                                    font=(bold_font, 25),
                                     command=lambda: TimeAttendance.back(window, master_frame))
         back_button.pack(side="bottom", pady=30)

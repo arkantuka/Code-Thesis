@@ -5,6 +5,10 @@ import openpyxl
 import pages.face_recognition_page as f_rec
 import pages.menu_course_data_page as menu_crs
 
+ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew.ttf")
+ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew Bold.ttf")
+normal_font = "THSarabunNew"
+button_font_size = 30
 class ChooseCourseFaceRecognition:
     
     def choose_course(window, frame, selection, file_paths, exam_time):
@@ -61,36 +65,25 @@ class ChooseCourseFaceRecognition:
         
         # Create Label
         label_name = ctk.CTkLabel(master=listbox_frame, text="Course List",
-                             font=("Leelawadee", 25))
+                             font=(normal_font, 40, "bold"))
         label_name.pack()
         
         # Create Listbox
-        listbox = tk.Listbox(master=listbox_frame, width=50, height=10, font=("Leelawadee", 15))
+        listbox = tk.Listbox(master=listbox_frame, width=50, height=10, font=(normal_font, 20))
         listbox.pack(padx=20, pady=20)
         for file in file_path:
             listbox.insert('end', str(file)[31:-5])
-            
-        # Create Radio Button
-        radio_frame = ctk.CTkFrame(master=master_frame)
-        radio_frame.pack(pady=20)
-        radio_label = ctk.CTkLabel(master=radio_frame, text="Select Exam Time: ", font=("Leelawadee", 20))
-        radio_label.grid(row=0, column=0, padx=10, pady=10)
-        radio_var = ctk.StringVar(master=radio_frame, value="1")
-        radio_1 = ctk.CTkRadioButton(master=radio_frame, text="Midterm", font=("Leelawadee", 20), variable=radio_var, value="1")
-        radio_1.grid(row=0, column=1, padx=10)
-        radio_2 = ctk.CTkRadioButton(master=radio_frame, text="Final", font=("Leelawadee", 20), variable=radio_var, value="2")
-        radio_2.grid(row=0, column=2, padx=10)
-            
+    
         # Create Choose Button
         choose_button = ctk.CTkButton(master=master_frame, fg_color='green',
                                        width=200, height=50, text="Choose Course",
-                                       font=("Leelawadee", 25),
+                                       font=(normal_font, button_font_size, "bold"),
                                        command=lambda: ChooseCourseFaceRecognition.choose_course(window, master_frame, listbox.curselection(), file_path, radio_var.get()))
         choose_button.pack(pady=30)
         
         # Create Back Button
         back_button = ctk.CTkButton(master=master_frame, fg_color='red',
                                        width=200, height=50, text="Back",
-                                       font=("Leelawadee", 25),
+                                       font=(normal_font, button_font_size, "bold"),
                                        command=lambda: ChooseCourseFaceRecognition.back(window, master_frame))
         back_button.pack(pady=30)

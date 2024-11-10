@@ -3,9 +3,15 @@ import customtkinter as ctk
 import openpyxl
 import cv2
 import os
-import pages.menu_student_data_page as menu_std
+import pages.manage_student_data_menu_page as mng_std_menu
 from PIL import Image
 from tkinter import messagebox, ttk
+
+font = "THSarabunNew"
+button_font_size = 30
+header_font_size = 50
+entry_font_size = 20
+table_font_size = 15
 
 # Create Camera Thread
 class CameraThread(threading.Thread):
@@ -16,6 +22,11 @@ class CameraThread(threading.Thread):
         
     def run(self):
         ManageStudentPage.capture_video(self.camera_id, self.camera_frame)
+        
+    def stop(self):
+        self.join()
+        cam = cv2.VideoCapture(self.camera_id+cv2.CAP_DSHOW)
+        cam.release()
 
 class ManageStudentPage:
     
@@ -27,14 +38,18 @@ class ManageStudentPage:
     cam2_count = 0
     table = None
     
-    # Back Button Function
-    def back(window, frame):
+    def close_camera():
         cam1 = cv2.VideoCapture(0+cv2.CAP_DSHOW)
         cam2 = cv2.VideoCapture(1+cv2.CAP_DSHOW)
         cam1.release()
         cam2.release()
+        cv2.destroyAllWindows()
+    
+    # Back Button Function
+    def back(window, frame):
+        ManageStudentPage.close_camera()
         frame.destroy()
-        menu_std.StudentMenu(window)
+        mng_std_menu.StudentMenu(window)
     
     # Back and save Button Function
     def backAndSave(window, frame, workbook, table, file_path):
@@ -48,27 +63,23 @@ class ManageStudentPage:
             sheet.append(row)            
         workbook.save(file_path)
         workbook.close()
-        cam1 = cv2.VideoCapture(0+cv2.CAP_DSHOW)
-        cam2 = cv2.VideoCapture(1+cv2.CAP_DSHOW)
-        cam1.release()
-        cam2.release()
-        cv2.destroyAllWindows()
+        ManageStudentPage.close_camera()
         frame.destroy()
-        menu_std.StudentMenu(window)
+        mng_std_menu.StudentMenu(window)
         
     # Create Button
     def createButton(frame, text, command):
         button = ctk.CTkButton(master=frame, fg_color='gray',
                                 width=200, height=50,
                                 text=text,
-                                font=("Leelawadee", 25),
+                                font=(font, button_font_size, "bold"),
                                 command=command)
         return button
     
     # Create Entry
     def createEntry(frame, wid, hold_text):
         entry = ctk.CTkEntry(frame, width=wid,
-                             font=('Leelawadee', 20), text_color='black',
+                             font=(font, entry_font_size), text_color='black',
                              placeholder_text=hold_text,
                              fg_color="#f0f0f0")
         return entry
@@ -145,7 +156,7 @@ class ManageStudentPage:
     
     def update_face_status(ids, year_path):
         collection_ids = []
-        faceID_path = os.listdir(f"version.0.5/images/{year_path}")
+        faceID_path = os.listdir(f"version.final/images/{year_path}")
         for id in faceID_path:
             collection_ids.append(id)
         return ManageStudentPage.find_ids_index_duplicate(collection_ids, ids)
@@ -175,7 +186,7 @@ class ManageStudentPage:
         # Create Student Information Label
         student_information_label = ctk.CTkLabel(master=sub_master_frame_1,
                                                 text="Student Information",
-                                                font=("Leelawadee", 35, "bold"),
+                                                font=(font, header_font_size, "bold"),
                                                 padx=20, pady=10)
         student_information_label.pack(pady=(15, 0))
         
@@ -197,8 +208,8 @@ class ManageStudentPage:
         
         # Configure Table
         style = ttk.Style()
-        style.configure("Treeview.Heading", font=("Leelawadee", 12, "bold"))
-        style.configure("Treeview", font=("Leelawadee", 15), rowheight=20)
+        style.configure("Treeview.Heading", font=(font, table_font_size,"bold"))
+        style.configure("Treeview", font=(font, table_font_size), rowheight=20)
 
         # Insert Table
         table['columns'] = list_of_data[0]
@@ -216,7 +227,7 @@ class ManageStudentPage:
         entry_frame.pack()
         
         # Create Entry for show selection data
-        style.configure("Entry", font=('Leelawadee', 20, 'bold'))
+        style.configure("Entry", font=(font, entry_font_size, 'bold'))
         id_label = ctk.CTkLabel(entry_frame, text='Student ID')
         id_label.grid(row=0, column=0)
         id_entry = ManageStudentPage.createEntry(entry_frame, 150, 'Student ID')
@@ -255,17 +266,17 @@ class ManageStudentPage:
         back_n_save_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='green',
                                     width=220, height=50,
                                     text="Back and Save",
-                                    font=("Leelawadee", 25),
+                                    font=(font, button_font_size, "bold"),
                                     command=lambda: ManageStudentPage.backAndSave(window, master_frame, workbook, table, file_path))
-        back_n_save_button.pack(side="bottom", pady=(30,30))
+        back_n_save_button.pack(side="bottom", pady=(30,25))
         
         # Back without save Button
         back_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='red',
                                     width=220, height=50,
                                     text="Back without Save",
-                                    font=("Leelawadee", 25),
+                                    font=(font, button_font_size, "bold"),
                                     command=lambda: ManageStudentPage.back(window, master_frame))
-        back_button.pack(side="bottom", pady=(30,0))
+        back_button.pack(side="bottom", pady=(20,0))
         
     # Create Camera Lebel and Show
     def capture_video(camid, cam_frame):
@@ -335,7 +346,7 @@ class ManageStudentPage:
         
     # Create Collect Face Function
     def collect_face(year_folder):
-        parent_dir = "version.0.5/images"
+        parent_dir = "version.final/images"
         year_folder = os.path.join(parent_dir, year_folder)
         if ManageStudentPage.student_id != '':
             faces_folder = os.path.join(year_folder, ManageStudentPage.student_id)
@@ -344,23 +355,26 @@ class ManageStudentPage:
             ManageStudentPage.capture_status = True
             ManageStudentPage.capture_cam1_status = True
             ManageStudentPage.capture_cam2_status = True
-        
+
     # Create Frame 2 Function
     def createFrame2(window, master_frame, year):
         # Create Sub Master Frame 2
         sub_master_frame_2 = ctk.CTkFrame(master=master_frame)
         sub_master_frame_2.grid(row=0, column=1, padx=5, pady=5)
         
-        # Create Camera Main Frame
+
         camera_main_frame = ctk.CTkFrame(master=sub_master_frame_2)
-        camera_main_frame.grid(row=0, column=0, padx=5, pady=5)
+        camera_main_frame.pack(fill="both", expand=True)
+
+        camera_frame = ctk.CTkFrame(master=camera_main_frame)
+        camera_frame.pack(fill="both", expand=True)
         
         # Create Camera 1 Frame
-        camera_1_frame = ctk.CTkFrame(master=camera_main_frame)
+        camera_1_frame = ctk.CTkFrame(master=camera_frame)
         camera_1_frame.grid(row=0, column=0, padx=5, pady=5)
         
         # Create Camera 2 Frame
-        camera_2_frame = ctk.CTkFrame(master=camera_main_frame)
+        camera_2_frame = ctk.CTkFrame(master=camera_frame)
         camera_2_frame.grid(row=0, column=1, padx=5, pady=5)
         
         # Start Thread
@@ -370,13 +384,14 @@ class ManageStudentPage:
         thread2.start()
         
                 # Create Facecollection Frame
-        collect_button_frame = ctk.CTkFrame(master=sub_master_frame_2)
-        collect_button_frame.grid(row=1, column=0, padx=5, pady=5)
+        collect_button_frame = ctk.CTkFrame(master=camera_main_frame)
+        collect_button_frame.pack(pady=10)
         
         # Create Facecollection Button
         collect_button = ManageStudentPage.createButton(collect_button_frame, 'Capture Face',
-                                                              lambda: ManageStudentPage.collect_face(year))
-        collect_button.grid(row=0, column=0, padx=10, pady=10)
+                                                            lambda: ManageStudentPage.collect_face(year))
+        collect_button.pack(pady=10)
+                
     
     def __init__(self, window, file_path):
         

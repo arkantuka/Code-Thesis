@@ -8,6 +8,11 @@ from CTkMessagebox import CTkMessagebox
 from tktimepicker import AnalogPicker, AnalogThemes
 from tkinter import filedialog
 
+ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew.ttf")
+ctk.FontManager.load_font("version.0.5/fonts/THSarabunNew Bold.ttf")
+normal_font = "THSarabunNew"
+bold_font = "THSarabunNew Bold"
+
 class Clock:
     def updateTime(window, time, label, key):
         if key == "midterm":
@@ -56,14 +61,14 @@ class AddCoursePage:
     def createLabel(frame, label_name):
         label = ctk.CTkLabel(master=frame,
                              text=label_name,
-                             font=("Leelawadee", 15),
+                             font=(normal_font, 15),
                              corner_radius=8)
         return label
         
     # Create Entry
     def createEntry(frame, hold_text, width):
         entry = ctk.CTkEntry(master=frame, width=width,
-                             font=('Leelawadee', 20), text_color='black',
+                             font=(normal_font, 20), text_color='black',
                              placeholder_text=hold_text,
                              fg_color="#f0f0f0")
         return entry
@@ -132,7 +137,7 @@ class AddCoursePage:
         
         main_label = ctk.CTkLabel(master=sub_master_frame_1,
                                    text="Add New Course Data",
-                                   font=("Leelawadee", 35, "bold"),
+                                   font=(bold_font, 35),
                                    padx=20, pady=10)
         main_label.pack(pady=15)
         
@@ -162,15 +167,15 @@ class AddCoursePage:
         radio_label.grid(row=0, column=0, padx=5, pady=0)
         radio_var = ctk.StringVar(master=radio_frame, value="1")
         radio_button_1 = ctk.CTkRadioButton(master=radio_frame, text="First Term",
-                                            font=("Leelawadee", 15), 
+                                            font=(normal_font, 15), 
                                             variable=radio_var, value="1")
         radio_button_1.grid(row=0, column=1, padx=5, pady=0)
         radio_button_2 = ctk.CTkRadioButton(master=radio_frame, text="Second Term",
-                                            font=("Leelawadee", 15),
+                                            font=(normal_font, 15),
                                             variable=radio_var, value="2")
         radio_button_2.grid(row=0, column=2, padx=5, pady=0)
         radio_button_3 = ctk.CTkRadioButton(master=radio_frame, text="Summer Term",
-                                            font=("Leelawadee", 15),
+                                            font=(normal_font, 15),
                                             variable=radio_var, value="3")
         radio_button_3.grid(row=0, column=3, padx=5, pady=0)
         
@@ -188,7 +193,7 @@ class AddCoursePage:
                                      str(current_year-2), str(current_year-1),
                                      str(current_year), str(current_year+1), 
                                      str(current_year+2)],
-                                     font=("Leelawadee", 15),variable=combobox_var)
+                                     font=(normal_font, 15),variable=combobox_var)
         combobox.grid(row=0, column=1, padx=5, pady=0)
         
         # Create Date Time Picker
@@ -201,13 +206,13 @@ class AddCoursePage:
         midterm_date_frame.grid(row=0, column=0, padx=(0,10))
         midterm_date_picker_label = AddCoursePage.createLabel(midterm_date_frame, "Midterm Exam Date: ")
         midterm_date_picker_label.grid(row=0, column=0)
-        midterm_date_picker = cal.DateEntry(midterm_date_frame, date_pattern="dd-mm-yyyy", state="readonly", font=("Leelawadee", 12))
+        midterm_date_picker = cal.DateEntry(midterm_date_frame, date_pattern="dd-mm-yyyy", state="readonly", font=(normal_font, 12))
         midterm_date_picker.grid(row=1, column=0)
         finale_date_frame = ctk.CTkFrame(master=date_frame)
         finale_date_frame.grid(row=0, column=1, padx=(10,0))
         final_date_picker_label = AddCoursePage.createLabel(finale_date_frame, "Final Exam Date: ")
         final_date_picker_label.grid(row=0, column=1)
-        final_date_picker = cal.DateEntry(finale_date_frame, date_pattern="dd-mm-yyyy", state="readonly", font=("Leelawadee", 12))
+        final_date_picker = cal.DateEntry(finale_date_frame, date_pattern="dd-mm-yyyy", state="readonly", font=(normal_font, 12))
         final_date_picker.grid(row=1, column=1)
         
         # Create Time Clock
@@ -215,20 +220,20 @@ class AddCoursePage:
         time_frame.grid(row=1, column=0, padx=5, pady=(0,10))
         midterm_time_frame = ctk.CTkFrame(master=time_frame)
         midterm_time_frame.grid(row=0, column=0)
-        midterm_start_time_label = ctk.CTkLabel(master=midterm_time_frame, text="Midterm Exam Start Time: ", font=("Leelawadee", 15))
+        midterm_start_time_label = ctk.CTkLabel(master=midterm_time_frame, text="Midterm Exam Start Time: ", font=(normal_font, 15))
         midterm_start_time_label.grid(row=0, column=0)
-        midterm_show_time = ctk.CTkLabel(master=midterm_time_frame, text="00:00:00", font=("Leelawadee", 15))
+        midterm_show_time = ctk.CTkLabel(master=midterm_time_frame, text="00:00:00", font=(normal_font, 15))
         midterm_show_time.grid(row=1, column=0)
-        midterm_start_btn = ctk.CTkButton(master=midterm_time_frame, text="Set Time", font=("Leelawadee", 15),
+        midterm_start_btn = ctk.CTkButton(master=midterm_time_frame, text="Set Time", font=(normal_font, 15),
                             command=lambda: Clock(midterm_show_time, "midterm"))
         midterm_start_btn.grid(row=2, column=0)
         final_time_frame = ctk.CTkFrame(master=time_frame)
         final_time_frame.grid(row=0, column=1, padx=5, pady=(10,10))
-        final_start_time_label = ctk.CTkLabel(master=final_time_frame, text="Final Exam Start Time: ", font=("Leelawadee", 15))
+        final_start_time_label = ctk.CTkLabel(master=final_time_frame, text="Final Exam Start Time: ", font=(normal_font, 15))
         final_start_time_label.grid(row=0, column=0)
-        final_show_time = ctk.CTkLabel(master=final_time_frame, text="00:00:00", font=("Leelawadee", 15))
+        final_show_time = ctk.CTkLabel(master=final_time_frame, text="00:00:00", font=(normal_font, 15))
         final_show_time.grid(row=1, column=0)
-        final_start_btn = ctk.CTkButton(master=final_time_frame, text="Set Time", font=("Leelawadee", 15),
+        final_start_btn = ctk.CTkButton(master=final_time_frame, text="Set Time", font=(normal_font, 15),
                             command=lambda: Clock(final_show_time, "final"))
         final_start_btn.grid(row=2, column=0)
         
@@ -237,7 +242,7 @@ class AddCoursePage:
         choose_file_frame.pack(padx=10, pady=10)
         choose_file_label = AddCoursePage.createLabel(choose_file_frame, "Chosen File Path: ")
         choose_file_label.grid(row=0, column=0)
-        path_show = ctk.CTkLabel(master=choose_file_frame, text="No File Chosen", font=("Leelawadee", 15))
+        path_show = ctk.CTkLabel(master=choose_file_frame, text="No File Chosen", font=(normal_font, 15))
         path_show.grid(row=1, column=0)
 
         # Create Buttons Frame
@@ -248,7 +253,7 @@ class AddCoursePage:
         import_button = ctk.CTkButton(master=button_frame, fg_color='gray',
                                 width=200, height=50,
                                 text="Import Student Data",
-                                font=("Leelawadee", 25),
+                                font=(normal_font, 25),
                                 command=lambda: AddCoursePage.importData(path_show))
         import_button.grid(row=0, column=0, padx=10, pady=10)
         
@@ -258,7 +263,7 @@ class AddCoursePage:
         submit_button = ctk.CTkButton(master=submit_button_frame, fg_color='green',
                                 width=200, height=50,
                                 text="Submit",
-                                font=("Leelawadee", 25),
+                                font=(bold_font, 25),
                                 command=lambda: AddCoursePage.addData(window, master_frame, 
                                                                       courseID_entry.get(), courseName_entry.get(), 
                                                                       radio_var.get(), combobox_var.get(), 
@@ -271,7 +276,7 @@ class AddCoursePage:
         exit_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='red',
                                 width=200, height=50,
                                 text="Exit",
-                                font=("Leelawadee", 25),
+                                font=(bold_font, 25),
                                 command=window.destroy)
         exit_button.pack(side="bottom", pady=20)
         
@@ -279,7 +284,7 @@ class AddCoursePage:
         back_button = ctk.CTkButton(master=sub_master_frame_1, fg_color='gray',
                                 width=200, height=50,
                                 text="Back",
-                                font=("Leelawadee", 25),
+                                font=(bold_font, 25),
                                 command=lambda: AddCoursePage.back(window, master_frame))
         back_button.pack(side="bottom", pady=(50,0))
     
