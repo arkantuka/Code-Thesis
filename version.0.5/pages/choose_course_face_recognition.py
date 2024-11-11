@@ -69,11 +69,22 @@ class ChooseCourseFaceRecognition:
         label_name.pack()
         
         # Create Listbox
-        listbox = tk.Listbox(master=listbox_frame, width=50, height=10, font=(normal_font, 20))
+        listbox = tk.Listbox(master=listbox_frame, width=50, height=10, font=(normal_font, 15))
         listbox.pack(padx=20, pady=20)
         for file in file_path:
             listbox.insert('end', str(file)[31:-5])
-    
+            
+        # Create Radio Button
+        radio_frame = ctk.CTkFrame(master=master_frame)
+        radio_frame.pack(pady=20)
+        radio_label = ctk.CTkLabel(master=radio_frame, text="Select Exam Time: ", font=(normal_font, button_font_size, "bold"))
+        radio_label.grid(row=0, column=0, padx=10, pady=10)
+        radio_var = ctk.StringVar(master=radio_frame, value="1")
+        radio_1 = ctk.CTkRadioButton(master=radio_frame, text="Midterm", font=(normal_font, button_font_size, "bold"), variable=radio_var, value="1")
+        radio_1.grid(row=0, column=1, padx=10)
+        radio_2 = ctk.CTkRadioButton(master=radio_frame, text="Final", font=(normal_font, button_font_size, "bold"), variable=radio_var, value="2")
+        radio_2.grid(row=0, column=2, padx=10)
+            
         # Create Choose Button
         choose_button = ctk.CTkButton(master=master_frame, fg_color='green',
                                        width=200, height=50, text="Choose Course",

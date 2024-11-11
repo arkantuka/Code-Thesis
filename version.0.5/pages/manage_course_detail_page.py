@@ -41,6 +41,7 @@ class CourseDetail:
             faceID_path = os.listdir(f"version.0.5/images/{year}")
             for id in faceID_path:
                 collection_ids.append(id)
+        print(ids)
         return CourseDetail.find_index_of_ids_duplicate(collection_ids, ids)
     
     # Create Button

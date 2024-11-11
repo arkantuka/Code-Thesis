@@ -1,5 +1,8 @@
 import customtkinter as ctk
 import pages.manage_student_data_menu_page as mng_std_menu
+import pages.manage_course_menu as mng_crs_menu
+import pages.choose_course_face_recognition as choose_f_rec
+import pages.choose_course_attendance as choose_crs_att
 from PIL import Image
 
 font = "THSarabunNew"
@@ -39,12 +42,11 @@ class MainPage:
         if order == 1:
             mng_std_menu.StudentMenu(window)
         elif order == 2:
-            # menu_crs.MainPage(window)
-            print("2")
+            mng_crs_menu.ManageCourseMenu(window)
         elif order == 3:
-            print("3")
+            choose_f_rec.ChooseCourseFaceRecognition(window)
         elif order == 4:
-            print("4")
+            choose_crs_att.ChooseCourseTimeAttendance(window)
         else:
             print("Error")
             

@@ -22,11 +22,6 @@ class CameraThread(threading.Thread):
         
     def run(self):
         ManageStudentPage.capture_video(self.camera_id, self.camera_frame)
-        
-    def stop(self):
-        self.join()
-        cam = cv2.VideoCapture(self.camera_id+cv2.CAP_DSHOW)
-        cam.release()
 
 class ManageStudentPage:
     
@@ -86,18 +81,21 @@ class ManageStudentPage:
     
     # Select record Function
     def select_record(table, id_entry, name_entry):
-        # Clear entry boxs
-        id_entry.delete(0, 'end')
-        name_entry.delete(0, 'end')
-        # Grab record
-        selected = table.focus()
-        values = table.item(selected, 'values')
-        # Output to boxs
-        id_entry.insert(0, values[0])
-        name_entry.insert(0, values[1])
-        # Set ID and Name
-        ManageStudentPage.set_id_name(id_entry, name_entry)
-    
+        try:
+            # Clear entry boxs
+            id_entry.delete(0, 'end')
+            name_entry.delete(0, 'end')
+            # Grab record
+            selected = table.focus()
+            values = table.item(selected, 'values')
+            # Output to boxs
+            id_entry.insert(0, values[0])
+            name_entry.insert(0, values[1])
+            # Set ID and Name
+            ManageStudentPage.set_id_name(id_entry, name_entry)
+        except:
+            pass
+        
     # Insert Data Function
     def insert_record(table, id_entry, name_entry):
         if id_entry.get() and name_entry.get() != '':
@@ -160,6 +158,13 @@ class ManageStudentPage:
         for id in faceID_path:
             collection_ids.append(id)
         return ManageStudentPage.find_ids_index_duplicate(collection_ids, ids)
+    
+    def sort_column(table, col, reverse):
+        data = [(table.set(item, col),item) for item in table.get_children('')]
+        data.sort(reverse=reverse)
+        for index, (val, item) in enumerate(data):
+            table.move(item, '', index)
+        table.heading(col, command=lambda: ManageStudentPage.sort_column(table, col, not reverse))
             
     # Create Frame 1 Function
     def createFrame1(window, master_frame, file_path):
@@ -218,7 +223,7 @@ class ManageStudentPage:
         table.column('Name', width=260)
         table.column('Face Status', anchor='center', width=100)
         for header in list_of_data[0]:
-            table.heading(str(header), text=str(header))
+            table.heading(str(header), text=str(header), command=lambda c=header: ManageStudentPage.sort_column(table, c, False))
         for value in list_of_data[1:]:
             table.insert("", "end", values=value)
             
