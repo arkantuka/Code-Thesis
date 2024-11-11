@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import pages.main_page as mp
 import pages.manage_student_data_page as mng_std
+import pages.collect_face_page as collect_f
 import openpyxl
 import os
 from tkinter import filedialog
@@ -50,12 +51,15 @@ class StudentMenu:
             pass
     
     # Open Excel Data and open new Page
-    def openExcelData(window, frame):
+    def openExcelData(window, frame, command):
         try:
             file_path = StudentMenu.fileDialog("version.final/students_data/")
             if file_path:
                 frame.destroy()
-                mng_std.ManageStudentPage(window, file_path)
+                if command == 1:
+                    mng_std.ManageStudentPage(window, file_path)
+                else:
+                    collect_f.CollectFacePage(window, file_path)
         except:
             pass
         
@@ -88,15 +92,21 @@ class StudentMenu:
         buttons_frame = ctk.CTkFrame(master=master_frame)
         buttons_frame.place(relx=0.5, rely=0.5, anchor=ctk.CENTER)
         
-        # Create Open Data Button
-        open_data_button = StudentMenu.createButton(buttons_frame, 'Open Student Data',
-                                                        lambda: StudentMenu.openExcelData(window, master_frame))
-        open_data_button.grid(row=0, column=1, padx=20, pady=10)
-        
         # Create Browse and Load File Button
         import_data_button = StudentMenu.createButton(buttons_frame, 'Import Excel File', 
                                                         lambda: StudentMenu.loadExcelData())
-        import_data_button.grid(row=1, column=1, padx=20, pady=10)
+        import_data_button.grid(row=0, column=1, padx=20, pady=10)
+        
+        # Create Edit Data Button
+        edit_data_button = StudentMenu.createButton(buttons_frame, 'Edit Student Data',
+                                                        lambda: StudentMenu.openExcelData(window, master_frame, 1))
+        edit_data_button.grid(row=1, column=1, padx=20, pady=10)
+        
+        # Create Collect Face Data Button
+        collect_data_button = StudentMenu.createButton(buttons_frame, 'Collect Face Data',
+                                                        lambda: StudentMenu.openExcelData(window, master_frame, 2))
+        collect_data_button.grid(row=2, column=1, padx=20, pady=10)
+
         
         # Exit Button
         exit_button = ctk.CTkButton(master=master_frame, fg_color='red',

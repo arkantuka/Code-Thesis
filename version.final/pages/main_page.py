@@ -64,7 +64,7 @@ class MainPage:
         
         # Menu Label
         menu_label = ctk.CTkLabel(master=master_frame,
-                                  text="Face Recognition For Attendance",
+                                  text="Face Recognition Application For Attendance",
                                   font=(font, header_font_size, "bold"),
                                   padx=100, pady=10)
         menu_label.pack(pady=(50, 0))

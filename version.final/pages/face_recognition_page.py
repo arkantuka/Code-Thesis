@@ -101,7 +101,7 @@ class FaceRecognition:
                 color_red = (255, 0, 0, 255)
                 color_green = (0, 255, 0, 255)
                 if confidence > 70:
-                    index = studentIDs.index(serial)
+                    index = studentIDs.index(str(serial))
                     # print(index)
                     cv2.putText(cv2image, str(serial)+" "+"{:.2f}".format(confidence), position, font, scale, color_green, thickness, lineType=cv2.LINE_AA)
                     cv2.rectangle(cv2image, box, color_green, thickness, lineType=cv2.LINE_AA)
@@ -125,6 +125,8 @@ class FaceRecognition:
         master_frame.pack(fill="both", expand=True)
         master_frame.grid_rowconfigure(0, weight=1)
         master_frame.grid_columnconfigure(0, weight=1)
+        for item in studentIDs:
+            studentIDs[studentIDs.index(item)] = str(item)
         
         # Create Camera Frame
         FaceRecognition.create_camera_frame(master_frame, file_path, studentIDs, studentNames)
