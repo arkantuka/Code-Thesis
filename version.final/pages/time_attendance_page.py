@@ -47,22 +47,42 @@ class TimeAttendance:
         # Configure Table
         style = ttk.Style()
         style.configure("Treeview.Heading", font=(font, 20, "bold"))
-        style.configure("Treeview", font=(font, 20), rowheight=20)
+        style.configure("Treeview", font=(font, 20), rowheight=25)
 
         # Insert Table
-        table['columns'] = list_of_data[0]
+        table['columns'] = list_of_data[2][:4]
         table.column('#0', width=0, stretch='YES')
         table.column('Student ID', anchor='center', width=130)
         table.column('Name', width=260)
         table.column('Date', anchor='center', width=100)
         table.column('Time', anchor='center', width=100)
-        for header in list_of_data[0]:
+        count_present = 0
+        count_absent = 0
+        count_all_student = 0
+        for header in list_of_data[2][:4]:
             table.heading(str(header), text=str(header), command=lambda col=header: TimeAttendance.sort_column(table, col, False))
-        for value in list_of_data[1:]:
-            table.insert("", "end", values=value)        
+        for value in list_of_data[3:]:
+            table.insert("", "end", values=value)
+            count_all_student += 1
+            if value[2] == None:
+                count_absent += 1
+            else :
+                count_present += 1
+        
+        # Create Label
+        amount_frame = ctk.CTkFrame(master=table_frame)
+        amount_frame.pack(pady=(15, 2))
+        all_student_label = ctk.CTkLabel(master=amount_frame, text="All Student: "+str(count_all_student), font=(font, 22))
+        all_student_label.pack(padx=(10, 10), side="left")
+        present_label = ctk.CTkLabel(master=amount_frame, text="Present: "+str(count_present), font=(font, 22))
+        present_label.pack(padx=(10, 10), side="left")
+        absent_label = ctk.CTkLabel(master=amount_frame, text="Absent: "+str(count_absent), font=(font, 22))
+        absent_label.pack(padx=(10, 10), side="right")
     
         
     def __init__(self, window, file_path):
+        
+        course_name = str(file_path[30:-5])
         
         # Create Master Frame
         master_frame = ctk.CTkFrame(master=window)
@@ -70,7 +90,7 @@ class TimeAttendance:
         
         # Create Menu Label
         time_attendance_label = ctk.CTkLabel(master=master_frame,
-                                  text="Time Attendance",
+                                  text=course_name,
                                   font=(font, header_font_size, "bold"),
                                   padx=20, pady=10)
         time_attendance_label.pack(pady=(20, 0))

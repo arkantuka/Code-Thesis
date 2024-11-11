@@ -19,24 +19,39 @@ class FaceRecognition:
         cam1.release()
         mp.MainPage(window)
         
-    def writeAttendance(id, name, course_name):
+    def writeAttendance(old_path, index):
+        course_name = str(old_path)[33:-5]
         parent_dir = 'version.final/time_attendance'
         file_path = os.path.join(parent_dir, course_name+'.xlsx')
         if not os.path.exists(file_path):
-            workbook = openpyxl.Workbook()
-            workbook.create_sheet(course_name)
-            sheetname = workbook.sheetnames
-            sheet = workbook[sheetname[0]]
-            sheet.append(['Student ID', 'Name','Date', 'Time'])
-            workbook.save(file_path)
+            wb = openpyxl.load_workbook(old_path)
+            sheet = wb.active
+            loadToList = list(sheet.values)
+            list_of_data = []
+            sheetname = wb.sheetnames
+            sheet = wb[sheetname[0]]
+            for row in loadToList:
+                list_of_data.append(list(row))
+            dict_of_data = {list_of_data[0][i]: list_of_data[1][i] for i in range(len(list_of_data[0]))}
+            sheet.delete_rows(1, sheet.max_row)
+            sheet.append(list(dict_of_data.keys()))
+            sheet.append(list(dict_of_data.values()))
+            header = ['Student ID', 'Name', 'Date', 'Time']
+            sheet.append(header)
+            for row_id in list_of_data[3:]:
+                row = row_id[:2]
+                sheet.append(row)
+            wb.save("version.final/time_attendance"+"/"+str(old_path)[33:-5]+".xlsx")
         workbook = openpyxl.load_workbook(file_path)
         sheetname = workbook.sheetnames
         sheet = workbook[sheetname[0]]
-        sheet.append([id, name,datetime.datetime.now().strftime("%d/%m/%Y"), datetime.datetime.now().strftime("%H:%M:%S")])
+        sheet.cell(row=index+4, column=3).value = datetime.datetime.now().strftime("%d/%m/%Y")
+        sheet.cell(row=index+4, column=4).value = datetime.datetime.now().strftime("%H:%M:%S")
         workbook.save(file_path)
         workbook.close()
         
-    def create_camera_frame(frame, course_name, studentIDs, studentNames):
+    def create_camera_frame(frame, file_path, studentIDs, studentNames):
+        course_name = str(file_path)[33:-5]
         # Create Camera Frame
         cam_frame = ctk.CTkFrame(master=frame)
         cam_frame.pack(pady=(5, 10))
@@ -76,7 +91,7 @@ class FaceRecognition:
                 cv2.rectangle(cv2image, box, color, thickness, lineType=cv2.LINE_AA)
                 try:
                     serial, confidence = face_recognizer.predict(gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
-                    print(serial, confidence)
+                    # print(serial, confidence)
                 except:
                     serial, confidence = 0, 0
                 position = (box[0], box[1] - 10)
@@ -87,11 +102,11 @@ class FaceRecognition:
                 color_green = (0, 255, 0, 255)
                 if confidence > 70:
                     index = studentIDs.index(serial)
-                    print(index)
+                    # print(index)
                     cv2.putText(cv2image, str(serial)+" "+"{:.2f}".format(confidence), position, font, scale, color_green, thickness, lineType=cv2.LINE_AA)
                     cv2.rectangle(cv2image, box, color_green, thickness, lineType=cv2.LINE_AA)
                     if str(serial) not in already_detected:
-                        FaceRecognition.writeAttendance(studentIDs[index], studentNames[index], course_name)
+                        FaceRecognition.writeAttendance(file_path, index)
                         already_detected.append(str(serial))
                 else:
                     name = "Unknown"
@@ -110,10 +125,9 @@ class FaceRecognition:
         master_frame.pack(fill="both", expand=True)
         master_frame.grid_rowconfigure(0, weight=1)
         master_frame.grid_columnconfigure(0, weight=1)
-        course_name = str(file_path)[33:-5]
         
         # Create Camera Frame
-        FaceRecognition.create_camera_frame(master_frame, course_name, studentIDs, studentNames)
+        FaceRecognition.create_camera_frame(master_frame, file_path, studentIDs, studentNames)
         
         # Back without save Button
         back_button = ctk.CTkButton(master=master_frame, fg_color='red',

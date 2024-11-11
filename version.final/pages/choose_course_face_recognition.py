@@ -28,7 +28,6 @@ class ChooseCourseFaceRecognition:
         for row in loadToList:
             list_of_data.append(list(row))
         dict_of_data = {list_of_data[0][i]: list_of_data[1][i] for i in range(len(list_of_data[0]))}
-        print(dict_of_data)
         for row in list_of_data[3:]:
             studentID.append(row[0])
             studentName.append(row[1])
