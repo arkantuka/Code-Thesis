@@ -14,6 +14,7 @@ header_font_size = 50
 class FaceRecognition:
     
     attendance_data = []
+    table = None
     
     # Back Button Function
     def back(window, frame):
@@ -53,7 +54,7 @@ class FaceRecognition:
         workbook.save(file_path)
         workbook.close()
         
-    def create_camera_frame(frame, file_path, studentIDs, studentNames):
+    def create_camera_frame(frame, file_path, studentIDs, studentNames, table):
         course_name = str(file_path)[33:-5]
         # Create Camera Frame
         cam_frame = ctk.CTkFrame(master=frame)
@@ -112,6 +113,7 @@ class FaceRecognition:
                         FaceRecognition.writeAttendance(file_path, index)
                         name = studentNames[index]
                         FaceRecognition.attendance_data.append([str(serial), name, datetime.datetime.now().strftime("%d/%m/%Y"), datetime.datetime.now().strftime("%H:%M:%S")])
+                        table.insert("", "end", values=(str(serial), name, datetime.datetime.now().strftime("%d/%m/%Y"), datetime.datetime.now().strftime("%H:%M:%S")))
                         already_detected.append(str(serial))
                 else:
                     name = "Unknown"
@@ -123,9 +125,65 @@ class FaceRecognition:
             lmain.after(100, show_frame)
         show_frame()
         
-    def create_attendance_frame(window, frame):
-        # Create Attendance Frame
-        attendance_frame = ctk.CTkFrame(master=frame)
+    # def create_attendance_frame(window, frame):
+    #     # Create Attendance Frame
+    #     attendance_frame = ctk.CTkFrame(master=frame)
+    #     attendance_frame.grid(row=0, column=1, padx=20, pady=10)
+        
+    #     # Create Attendance Label
+    #     attendance_label = ctk.CTkLabel(master=attendance_frame, text="Attendance", font=(font, 40, "bold"))
+    #     attendance_label.pack()
+        
+    #     # Create Attendance Table
+    #     tree_scrollbar = ttk.Scrollbar(attendance_frame, orient="vertical")
+    #     tree_scrollbar.pack(side="right", fill="y")
+    #     table = ttk.Treeview(attendance_frame, height=30, show="headings", yscrollcommand=tree_scrollbar.set)
+    #     table.pack(fill="both", expand=True)
+    #     tree_scrollbar.config(command=table.yview)
+        
+    #     # Configure Table
+    #     style = ttk.Style()
+    #     style.configure("Treeview.Heading", font=(font, 15, "bold"))
+    #     style.configure("Treeview", font=(font, 15), rowheight=20)
+        
+    #     # Insert Table
+    #     table['columns'] = ["ID", "Name", "Date", "Time"]
+    #     table.column('#0', width=0, stretch='YES')
+    #     table.column('ID', width=100, anchor='center')
+    #     table.column('Name', width=200, anchor='center')
+    #     table.column('Date', width=150, anchor='center')
+    #     table.column('Time', width=150, anchor='center')
+    
+    #     table.heading('ID', text='ID', anchor='center')
+    #     table.heading('Name', text='Name', anchor='center')
+    #     table.heading('Date', text='Date', anchor='center')
+    #     table.heading('Time', text='Time', anchor='center')
+        
+    #     for value in FaceRecognition.attendance_data:
+    #         table.insert("", "end", values=value)
+                
+    #     # Back without save Button
+    #     back_button = ctk.CTkButton(master=attendance_frame, fg_color='red',
+    #                                 width=220, height=50,
+    #                                 text="Back",
+    #                                 font=(font, button_font_size, "bold"),
+    #                                 command=lambda: FaceRecognition.back(window, frame))
+    #     back_button.pack(side="bottom", pady=5)
+         
+        
+    def __init__(self, window, file_path, studentIDs, studentNames, exam_time):
+        # Create Master Frame
+        master_frame = ctk.CTkFrame(master=window)
+        master_frame.pack(fill="both", expand=True)
+        master_frame.grid_rowconfigure(0, weight=1)
+        master_frame.grid_columnconfigure(0, weight=1)
+        master_frame.grid_columnconfigure(1, weight=1)
+        
+        for item in studentIDs:
+            studentIDs[studentIDs.index(item)] = str(item)
+            
+                # Create Attendance Frame
+        attendance_frame = ctk.CTkFrame(master=master_frame)
         attendance_frame.grid(row=0, column=1, padx=20, pady=10)
         
         # Create Attendance Label
@@ -161,26 +219,14 @@ class FaceRecognition:
             table.insert("", "end", values=value)
                 
         # Back without save Button
-        back_button = ctk.CTkButton(master=frame, fg_color='red',
+        back_button = ctk.CTkButton(master=attendance_frame, fg_color='red',
                                     width=220, height=50,
                                     text="Back",
                                     font=(font, button_font_size, "bold"),
-                                    command=lambda: FaceRecognition.back(window, frame))
+                                    command=lambda: FaceRecognition.back(window, master_frame))
         back_button.pack(side="bottom", pady=5)
-         
-        
-    def __init__(self, window, file_path, studentIDs, studentNames, exam_time):
-        # Create Master Frame
-        master_frame = ctk.CTkFrame(master=window)
-        master_frame.pack(fill="both", expand=True)
-        master_frame.grid_rowconfigure(0, weight=1)
-        master_frame.grid_columnconfigure(0, weight=1)
-        master_frame.grid_columnconfigure(1, weight=1)
-        
-        for item in studentIDs:
-            studentIDs[studentIDs.index(item)] = str(item)
         
         # Create Camera Frame
-        FaceRecognition.create_camera_frame(master_frame, file_path, studentIDs, studentNames)
-        FaceRecognition.create_attendance_frame(window, master_frame)
+        FaceRecognition.create_camera_frame(master_frame, file_path, studentIDs, studentNames, table)
+        # FaceRecognition.create_attendance_frame(window, master_frame)
 
