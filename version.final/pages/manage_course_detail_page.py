@@ -1,8 +1,12 @@
 import os
 import customtkinter as ctk
 import openpyxl
+import openpyxl.workbook
 import pages.manage_course_menu as mng_crs_menu
 from tkinter import ttk
+import tkcalendar as cal
+from CTkSpinbox import *
+from CTkMessagebox import CTkMessagebox
 
 font = "THSarabunNew"
 button_font_size = 30
@@ -18,6 +22,12 @@ class CourseDetail:
         
     # Back and save Button Function
     def backAndSave(window, frame, workbook, table, file_path, dict_of_data):
+        parent_dir = 'version.final/course_data'
+        old_file_name = str(file_path).split('/')[-1]
+        year = dict_of_data['Year']
+        term = dict_of_data['Term']
+        file_name = f"{dict_of_data['Course ID']}-{year}-{term}-{dict_of_data['Course Name']}.xlsx"
+        new_path = os.path.join(parent_dir,year,term,file_name)
         sheetname = workbook.sheetnames
         sheet = workbook[sheetname[0]]
         sheet.delete_rows(1, sheet.max_row)
@@ -28,10 +38,12 @@ class CourseDetail:
         for row_id in table.get_children():
             row = table.item(row_id)['values'][:3]
             sheet.append(row)            
-        workbook.save(file_path)
+        workbook.save(new_path)
         workbook.close()
         frame.destroy()
         mng_crs_menu.ManageCourseMenu(window)
+        if old_file_name != file_name:
+            os.remove(file_path)        
     
     def find_index_of_ids_duplicate(ids_in_database, ids_in_course):
         idx = []
@@ -82,32 +94,59 @@ class CourseDetail:
             pass        
         
     # Insert Data Function
-    def add(table, id_entry, name_entry):
+    def add(table, id_entry, name_entry, all_ids, all_names):
         if id_entry.get() and name_entry.get() != '':
-            table.insert(parent='', index='end', text="",
-                        values=(id_entry.get(), name_entry.get(), 'None'))
-            # Clear the boxes
+            if id_entry.get() in all_ids:
+                CTkMessagebox(title='Error', message='ID already exists')
+            elif name_entry.get() in all_names:
+                CTkMessagebox(title='Error', message='Name already exists')
+            else:
+                table.insert(parent='', index='end', text="",
+                            values=(id_entry.get(), name_entry.get(), 'None'))
+                all_ids.append(id_entry.get())
+                all_names.append(name_entry.get())
+                # Clear the boxes
+                id_entry.delete(0, 'end')
+                name_entry.delete(0, 'end')
+        else:
+            pass
+        
+    # Update Record Function
+    def edit(table, id_entry, name_entry, all_ids, all_names):
+        if id_entry.get() and name_entry.get() != '':
+            # Grab record number
+            selected = table.focus()
+            # Remove old data and Add new
+            old_id = table.item(selected, 'values')[0]
+            old_name = table.item(selected, 'values')[1]
+            all_ids.remove(old_id)
+            all_names.remove(old_name)
+            all_ids.append(id_entry.get())
+            all_names.append(name_entry.get())
+            
+            face_status = table.item(selected, 'values')[2]
+            # Save new data
+            table.item(selected, text="", values=(id_entry.get(), name_entry.get(), face_status))
+
+            # Clear entry boxes
             id_entry.delete(0, 'end')
             name_entry.delete(0, 'end')
         else:
             pass
         
-    # Update Record Function
-    def edit(table, id_entry, name_entry):
-        if id_entry.get() and name_entry.get() != '':
-            # Grab record number
-            selected = table.focus()
-            face_status = table.item(selected, 'values')[2]
-            # Save new data
-            table.item(selected, text="", values=(id_entry.get(), name_entry.get(), face_status))
-        else:
-            pass
-        
     # Delete Record Function
-    def delete(table):
-        if table.selection() != () :   
+    def delete(table, id_entry, name_entry, all_ids, all_names):
+        if table.selection() != () :
+            selected = table.focus()
+            values = table.item(selected, 'values')
+            all_ids.remove(values[0])    
+            all_names.remove(values[1])   
             for item in table.selection():
                 table.delete(item)
+                
+            # Clear entry boxes
+            id_entry.delete(0, 'end')
+            name_entry.delete(0, 'end')
         else:
             pass
         
@@ -129,6 +168,7 @@ class CourseDetail:
         dict_of_data = {list_of_data[0][i]: list_of_data[1][i] for i in range(len(list_of_data[0]))}
         list_of_data[2][2] = 'Face Status'
         allIDs = [str(i[0]) for i in list_of_data[3:]]
+        allNames = [str(i[1]) for i in list_of_data[3:]]
         duplicate_index = CourseDetail.update_face_status(allIDs)
         for i in duplicate_index:
             list_of_data[i][2] = 'Collected'
@@ -144,21 +184,22 @@ class CourseDetail:
         main_frame = ctk.CTkFrame(master=master_frame)
         main_frame.grid_columnconfigure(0, weight=1)
         main_frame.grid_columnconfigure(1, weight=1)
+        main_frame.grid_columnconfigure(2, weight=1)
         main_frame.pack()
         
         # Create Frame Right
-        frame_right = ctk.CTkFrame(master=main_frame)
-        frame_right.grid(row=0, column=1, padx=(10, 0), pady=10)
+        frame_center = ctk.CTkFrame(master=main_frame)
+        frame_center.grid(row=0, column=1, padx=(10, 0), pady=10)
         
         # Create Label
-        student_label = ctk.CTkLabel(master=frame_right,
+        student_label = ctk.CTkLabel(master=frame_center,
                                      text="Student Information",
                                      font=(font, button_font_size, "bold"),
                                      padx=10, pady=10)
         student_label.pack()
         
         # Create course detail frame
-        course_detail_frame = ctk.CTkFrame(master=frame_right)
+        course_detail_frame = ctk.CTkFrame(master=frame_center)
         course_detail_frame.pack(pady=10)
         
         # Create table frame
@@ -175,8 +216,8 @@ class CourseDetail:
         
         # Configure Table
         style = ttk.Style()
-        style.configure("Treeview.Heading", font=(font, 12, "bold"))
-        style.configure("Treeview", font=(font, 15), rowheight=20)
+        style.configure("Treeview.Heading", font=(font, 15, "bold"))
+        style.configure("Treeview", font=(font, 15), rowheight=27)
 
         # Insert Table
         table['columns'] = list_of_data[2][:3]
@@ -190,7 +231,7 @@ class CourseDetail:
             table.insert("", "end", values=value)
             
         # Create Student Entry Frame
-        entry_frame = ctk.CTkFrame(master=frame_right)
+        entry_frame = ctk.CTkFrame(master=frame_center)
         entry_frame.pack()
         
         # Create Entry for show selection data
@@ -204,10 +245,14 @@ class CourseDetail:
         name_entry = CourseDetail.createEntry(entry_frame, 350, 'Full Name')
         name_entry.grid(row=1, column=1)
         
+        # Create Right Frame
+        frame_right = ctk.CTkFrame(master=main_frame)
+        frame_right.grid(row=0, column=2, padx=(10, 0), pady=10)
+        
         # Create Course Description Label
         course_description_label = ctk.CTkLabel(master=frame_right,
                                                 text="Course Description",
-                                                font=(font, 20),
+                                                font=(font, 30, "bold"),
                                                 padx=100, pady=10)
         course_description_label.pack()
         
@@ -217,37 +262,125 @@ class CourseDetail:
         
         # Create Information Frame
         courseID_label = ctk.CTkLabel(master=course_description_frame,
-                                     text="ID: "+dict_of_data['Course ID'],
+                                     text="Course ID: "+dict_of_data['Course ID'],
                                      font=(font, 20))
-        courseID_label.grid(row=0, column=0, padx= 20)
+        courseID_label.pack()
+        courseID_var = ctk.StringVar()
+        courseID_var.set(dict_of_data['Course ID'])
+        courseID_entry = ctk.CTkEntry(master=course_description_frame,
+                                      fg_color="#f0f0f0",
+                                      text_color='black',
+                                      textvariable=courseID_var,
+                                      width=220, font=(font, 20))
+        courseID_entry.pack(pady=(0, 10))
+        
         courseName_label = ctk.CTkLabel(master=course_description_frame,
                                        text="Course Name: "+dict_of_data['Course Name'],
                                        font=(font, 20))
-        courseName_label.grid(row=0, column=1, padx= 20)
+        courseName_label.pack()
+        courseName_var = ctk.StringVar()
+        courseName_var.set(dict_of_data['Course Name'])
+        courseName_entry = ctk.CTkEntry(master=course_description_frame,
+                                        fg_color="#f0f0f0",
+                                        text_color='black',
+                                        textvariable=courseName_var,
+                                        width=220, font=(font, 20))
+        courseName_entry.pack(pady=(0, 10))
+        
         courseTerm_label = ctk.CTkLabel(master=course_description_frame,
                                        text="Term: "+dict_of_data['Term'],
                                        font=(font, 20))
-        courseTerm_label.grid(row=1, column=0)
+        courseTerm_label.pack()
+        radio_frame = ctk.CTkFrame(master=course_description_frame)
+        radio_frame.pack(pady=(0, 10))
+        radio_var = ctk.StringVar()
+        radio_var.set(dict_of_data['Term'])
+        radio_button1 = ctk.CTkRadioButton(master=radio_frame, variable=radio_var, value="1", text="First Term")
+        radio_button1.grid(row=0, column=0, padx=5, pady=0)
+        radio_button2 = ctk.CTkRadioButton(master=radio_frame, variable=radio_var, value="2", text="Second Term")
+        radio_button2.grid(row=0, column=1, padx=5, pady=0)
+        radio_button3 = ctk.CTkRadioButton(master=radio_frame, variable=radio_var, value="3", text="Summer Term")
+        radio_button3.grid(row=0, column=2, padx=5, pady=0)
+        
         courseYear_label = ctk.CTkLabel(master=course_description_frame,
                                        text="Year: "+dict_of_data['Year'],
                                        font=(font, 20))
-        courseYear_label.grid(row=1, column=1)
+        courseYear_label.pack()
+        courseYear_var = ctk.IntVar()
+        courseYear_var.set(dict_of_data['Year'])
+        courseYear_entry = ctk.CTkEntry(master=course_description_frame,
+                                        fg_color="#f0f0f0",
+                                        text_color='black',
+                                        textvariable=courseYear_var,
+                                        width=220, font=(font, 20))
+        courseYear_entry.pack(pady=(0, 10))
+        
         course_midterm_date_label = ctk.CTkLabel(master=course_description_frame,
                                                 text="Midterm Date: "+dict_of_data['Midterm Exam'],
                                                 font=(font, 20))
-        course_midterm_date_label.grid(row=2, column=0, padx= 20)
+        course_midterm_date_label.pack()
+        midterm_date_frame = ctk.CTkFrame(master=course_description_frame)
+        midterm_date_frame.pack(pady=(0, 10))
+        midterm_date_picker = cal.DateEntry(master=midterm_date_frame, date_pattern='dd-mm-yyyy',
+                                            state='readonly', font=(font, 15))
+        midterm_date_picker.set_date(dict_of_data['Midterm Exam'])
+        midterm_date_picker.pack()
+        
         course_midterm_time_label = ctk.CTkLabel(master=course_description_frame,
                                                 text="Midterm Time: "+dict_of_data['Midterm Start Time'],
                                                 font=(font, 20))
-        course_midterm_time_label.grid(row=3, column=0)
+        course_midterm_time_label.pack()
+        spinbox_midterm_frame = ctk.CTkFrame(master=course_description_frame)
+        spinbox_midterm_frame.pack(pady=(0, 10))
+        spinmid_hour_var = ctk.IntVar()
+        spinmid_hour_var.set(dict_of_data['Midterm Start Time'].split(':')[0])
+        spinbox_midterm_hour = CTkSpinbox(master=spinbox_midterm_frame, min_value=0, max_value=23, start_value=spinmid_hour_var.get(), variable=spinmid_hour_var)
+        spinbox_midterm_hour.grid(row=0, column=0, padx=5, pady=0)
+        spinmid_min_var = ctk.IntVar()
+        spinmid_min_var.set(dict_of_data['Midterm Start Time'].split(':')[1])
+        spinbox_midterm_minute = CTkSpinbox(master=spinbox_midterm_frame, min_value=0, max_value=59, start_value=spinmid_min_var.get(), variable=spinmid_min_var)
+        spinbox_midterm_minute.grid(row=0, column=1, padx=5, pady=0)
+        
         course_final_date_label = ctk.CTkLabel(master=course_description_frame,
                                                text="Final Date: "+dict_of_data['Final Exam'],
                                                font=(font, 20))
-        course_final_date_label.grid(row=2, column=1, padx= 20)
+        course_final_date_label.pack()
+        final_date_frame = ctk.CTkFrame(master=course_description_frame)
+        final_date_frame.pack(pady=(0, 10))
+        final_date_picker = cal.DateEntry(master=final_date_frame, date_pattern='dd-mm-yyyy',
+                                          state='readonly', font=(font, 15))
+        final_date_picker.set_date(dict_of_data['Final Exam'])
+        final_date_picker.pack()
+        
         course_final_time_label = ctk.CTkLabel(master=course_description_frame,
                                                text="Final Time: "+dict_of_data['Final Start Time'],
                                                font=(font, 20))
-        course_final_time_label.grid(row=3, column=1)        
+        course_final_time_label.pack()
+        spinbox_final_frame = ctk.CTkFrame(master=course_description_frame)
+        spinbox_final_frame.pack(pady=(0, 10))
+        spinfinal_hour_var = ctk.IntVar()
+        spinfinal_hour_var.set(dict_of_data['Final Start Time'].split(':')[0])
+        spinbox_final_hour = CTkSpinbox(master=spinbox_final_frame, min_value=0, max_value=23, start_value=spinfinal_hour_var.get(), variable=spinfinal_hour_var)
+        spinbox_final_hour.grid(row=0, column=0, padx=5, pady=0)
+        spinfinal_min_var = ctk.IntVar()
+        spinfinal_min_var.set(dict_of_data['Final Start Time'].split(':')[1])
+        spinbox_final_minute = CTkSpinbox(master=spinbox_final_frame, min_value=0, max_value=59, start_value=spinfinal_min_var.get(), variable=spinfinal_min_var)
+        spinbox_final_minute.grid(row=0, column=1, padx=5, pady=0)
+        dict_of_data['Final Start Time'] = str(spinfinal_hour_var.get())+':'+str(spinfinal_min_var.get())
+
+        def edit():
+            dict_of_data['Course ID'] = courseID_entry.get()
+            dict_of_data['Course Name'] = courseName_entry.get()
+            dict_of_data['Term'] = radio_var.get()
+            dict_of_data['Year'] = courseYear_entry.get()
+            dict_of_data['Midterm Exam'] = midterm_date_picker.get_date().strftime("%d/%m/%Y")
+            dict_of_data['Midterm Start Time'] = str(spinmid_hour_var.get())+':'+str(spinmid_min_var.get())
+            dict_of_data['Final Exam'] = final_date_picker.get_date().strftime("%d/%m/%Y")
+            dict_of_data['Final Start Time'] = str(spinfinal_hour_var.get())+':'+str(spinfinal_min_var.get())
+            
+        # Create Edit Buttons Frame
+        edit_button = CourseDetail.createButton(course_description_frame, 'Edit', lambda: edit())
+        edit_button.pack(pady=(20, 10))
         
         # Create Frame Left
         frame_left = ctk.CTkFrame(master=main_frame)
@@ -258,15 +391,15 @@ class CourseDetail:
         buttons_frame.pack(pady=10)
         
         # Create Add Button
-        add_button = CourseDetail.createButton(buttons_frame, 'Add', lambda: CourseDetail.add(table, id_entry, name_entry))
+        add_button = CourseDetail.createButton(buttons_frame, 'Add', lambda: CourseDetail.add(table, id_entry, name_entry, allIDs, allNames))
         add_button.grid(row=0, column=0, padx=20, pady=10)
         
         # Create Edit Button
-        edit_button = CourseDetail.createButton(buttons_frame, 'Edit', lambda: CourseDetail.edit(table, id_entry, name_entry))
+        edit_button = CourseDetail.createButton(buttons_frame, 'Edit', lambda: CourseDetail.edit(table, id_entry, name_entry, allIDs, allNames))
         edit_button.grid(row=1, column=0, padx=20, pady=10)
         
         # Create Delete Button
-        delete_button = CourseDetail.createButton(buttons_frame, 'Delete', lambda: CourseDetail.delete(table))
+        delete_button = CourseDetail.createButton(buttons_frame, 'Delete', lambda: CourseDetail.delete(table, id_entry, name_entry, allIDs, allNames))
         delete_button.grid(row=2, column=0, padx=20, pady=10)
         
         # bind

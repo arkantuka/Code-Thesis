@@ -81,13 +81,20 @@ class ManageStudentPage:
             pass
         
     # Insert Data Function
-    def insert_record(table, id_entry, name_entry):
+    def insert_record(table, id_entry, name_entry, all_ids, all_names):
         if id_entry.get() and name_entry.get() != '':
-            table.insert(parent='', index='end', text="",
-                        values=(id_entry.get(), name_entry.get(), 'None'))
-            # Clear the boxes
-            id_entry.delete(0, 'end')
-            name_entry.delete(0, 'end')
+            if id_entry.get() in all_ids:
+                CTkMessagebox(title='Error', message='ID already exists')
+            elif name_entry.get() in all_names:
+                CTkMessagebox(title='Error', message='Name already exists')
+            else:
+                table.insert(parent='', index='end', text="",
+                            values=(id_entry.get(), name_entry.get(), 'None'))
+                all_ids.append(id_entry.get())
+                all_names.append(name_entry.get())
+                # Clear the boxes
+                id_entry.delete(0, 'end')
+                name_entry.delete(0, 'end')
         else:
             pass           
     
@@ -95,21 +102,42 @@ class ManageStudentPage:
         ManageStudentPage.table = table
         
     # Update Record Function
-    def update_record(table, id_entry, name_entry):
+    def update_record(table, id_entry, name_entry, all_ids, all_names):
         if id_entry.get() and name_entry.get() != '':
             # Grab record number
             selected = table.focus()
+            # Remove old data and Add new
+            old_id = table.item(selected, 'values')[0]
+            old_name = table.item(selected, 'values')[1]
+            all_ids.remove(old_id)
+            all_names.remove(old_name)
+            all_ids.append(id_entry.get())
+            all_names.append(name_entry.get())
+            
             face_status = table.item(selected, 'values')[2]
             # Save new data
             table.item(selected, text="", values=(id_entry.get(), name_entry.get(), face_status))
+            
+            # Clear entry boxes
+            id_entry.delete(0, 'end')
+            name_entry.delete(0, 'end')
         else:
             pass
     
     # Delete Record Function
-    def delete_record(table):
-        if table.selection() != () :   
+    def delete_record(table, id_entry, name_entry, all_ids, all_names):
+        if table.selection() != () :
+            selected = table.focus()
+            values = table.item(selected, 'values')
+            all_ids.remove(values[0])
+            all_names.remove(values[1])
+            # Delete record
             for item in table.selection():
                 table.delete(item)
+                
+            # Clear entry boxes
+            id_entry.delete(0, 'end')
+            name_entry.delete(0, 'end')
         else:
             pass
         
@@ -154,6 +182,7 @@ class ManageStudentPage:
                 continue
             list_of_data.append(list(row))
         all_ids = [i[0] for i in list_of_data[3:]]
+        all_names = [i[1] for i in list_of_data[3:]]
         year_path = os.path.basename(file_path)
         year_path = os.path.splitext(year_path)[0]
         duplicate_ids = ManageStudentPage.update_face_status(all_ids, year_path)
@@ -230,17 +259,17 @@ class ManageStudentPage:
         
         # Create Insert Data Button
         insert_data_button = ManageStudentPage.createButton(button_frame, 'Insert Data',
-                                                              lambda: ManageStudentPage.insert_record(table, id_entry, name_entry))
+                                                              lambda: ManageStudentPage.insert_record(table, id_entry, name_entry, all_ids, all_names))
         insert_data_button.grid(row=0, column=0, padx=20, pady=10)
         
         # Create Update Data Button
         update_data_button = ManageStudentPage.createButton(button_frame, 'Update Data',
-                                                              lambda: ManageStudentPage.update_record(table, id_entry, name_entry))
+                                                              lambda: ManageStudentPage.update_record(table, id_entry, name_entry, all_ids, all_names))
         update_data_button.grid(row=1, column=0, padx=20, pady=10)
         
         # Create Delete Data Button
         delete_data_button = ManageStudentPage.createButton(button_frame, 'Delete Data',
-                                                              lambda: ManageStudentPage.delete_record(table))
+                                                              lambda: ManageStudentPage.delete_record(table, id_entry, name_entry, all_ids, all_names))
         delete_data_button.grid(row=2, column=0, padx=20, pady=10)
         
         # bind
@@ -267,7 +296,7 @@ class ManageStudentPage:
         
         # Create Master Frame
         master_frame = ctk.CTkFrame(master=window)
-        master_frame.pack(fill="both", expand=True)
+        master_frame.pack()
         
         year_path = os.path.basename(file_path)
         year_path = os.path.splitext(year_path)[0]
