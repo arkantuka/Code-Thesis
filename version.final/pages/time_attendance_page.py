@@ -64,7 +64,7 @@ class TimeAttendance:
         for value in list_of_data[3:]:
             table.insert("", "end", values=value)
             count_all_student += 1
-            if value[2] == None:
+            if value[2] == "ขาดสอบ":
                 count_absent += 1
             else :
                 count_present += 1

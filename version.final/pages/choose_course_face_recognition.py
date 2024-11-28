@@ -14,9 +14,9 @@ class ChooseCourseFaceRecognition:
     def choose_course(window, frame, selection, file_paths, exam_time):
         for item in selection:
             new_selection = item
-        studentID, studentName, time = ChooseCourseFaceRecognition.getStudentIDandName(file_paths[new_selection], exam_time)
+        studentID, studentName, date, time, test = ChooseCourseFaceRecognition.getStudentIDandName(file_paths[new_selection], exam_time)
         frame.destroy()
-        f_rec.FaceRecognition(window, file_paths[new_selection], studentID, studentName, time)
+        f_rec.FaceRecognition(window, file_paths[new_selection], studentID, studentName, date, time, test)
         
     def getStudentIDandName(file_path, exam_time):
         studentID = []
@@ -32,10 +32,14 @@ class ChooseCourseFaceRecognition:
             studentID.append(row[0])
             studentName.append(row[1])
         if exam_time == '1':
+            date = dict_of_data.get('Midterm Exam')
             time = dict_of_data.get('Midterm Start Time')
+            test = 'Midterm'
         elif exam_time == '2':
+            date = dict_of_data.get('Final Exam')
             time = dict_of_data.get('Final Start Time')
-        return studentID , studentName , time
+            test = 'Final'
+        return studentID , studentName , date , time , test
         
     def get_file_name():
         file_name = []
