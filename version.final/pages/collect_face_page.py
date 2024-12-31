@@ -221,7 +221,6 @@ class CollectFacePage:
         
     # Create Camera Lebel and Show
     def capture_video(camid, cam_frame):
-        
         # Create Face Detection YUNet
         directory = os.path.dirname(__file__)
         weights = os.path.join(directory, "face_detection_yunet_2023mar.onnx")
@@ -272,11 +271,13 @@ class CollectFacePage:
                 elif CollectFacePage.capture_status:
                     if CollectFacePage.cam1_count < 50 and camid == 0:
                         CollectFacePage.cam1_count += 1
-                        cv2.imwrite(CollectFacePage.faces_path+"/"+str(CollectFacePage.student_id)+"-"+str(camid)+"-"+str(CollectFacePage.cam1_count)+".jpg", 
+                        cv2.imwrite(CollectFacePage.faces_path+"/"+str(CollectFacePage.student_id)+"-"
+                                    +str(camid)+"-"+str(CollectFacePage.cam1_count)+".jpg", 
                                     gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
                     if CollectFacePage.cam2_count < 50 and camid == 1:
                         CollectFacePage.cam2_count += 1
-                        cv2.imwrite(CollectFacePage.faces_path+"/"+str(CollectFacePage.student_id)+"-"+str(camid)+"-"+str(CollectFacePage.cam2_count)+".jpg",
+                        cv2.imwrite(CollectFacePage.faces_path+"/"+str(CollectFacePage.student_id)+"-"
+                                    +str(camid)+"-"+str(CollectFacePage.cam2_count)+".jpg",
                                     gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
             # Show Image
             img = Image.fromarray(cv2image)

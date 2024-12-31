@@ -132,7 +132,6 @@ class FaceRecognition:
                 cv2.rectangle(cv2image, box, color, thickness, lineType=cv2.LINE_AA)
                 try:
                     serial, confidence = face_recognizer.predict(gray_img[box[1]:box[1]+box[3], box[0]:box[0]+box[2]])
-                    # print(serial, confidence)
                 except:
                     serial, confidence = 0, 0
                 position = (box[0], box[1] - 10)
